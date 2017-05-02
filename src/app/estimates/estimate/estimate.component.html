@@ -11,24 +11,32 @@
     <div class="col-lg-12">
       <div class="card">
         <div class="card-header">
-          <i class="fa fa-align-justify"></i> Recent Estimates
+          <strong>Recent Estimates</strong>
         </div>
         <div class="card-block">
           <table class="table">
             <thead>
               <tr>
                 <th>Name</th>
-                <th>Cost</th>
-                <th>Effort</th>
+                <th style="text-align: right">Labor Cost</th>
+                <th style="text-align: right">Add-Ons Cost</th>
+                <th style="text-align: right">Total Cost</th>
+                <th style="text-align: right">Effort (hrs)</th>
+                <th style="text-align: right">Components Count</th>
                 <th>Date Created</th>
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let estimate of estimates">
-                <td>{{estimate.name}}</td>
-                <td>{{estimate.totalcost |  currency : 'USD' : true : '1.2-2'}}</td>
-                <td>{{estimate.effort | number: '1.2-2'}}</td>
-                <td>{{estimate.createddate | date: 'fullDate'}}</td>
+              <tr *ngFor="let estimate of estimates" (click)="gotoDetails(estimate)">
+                <td>
+                  <a [routerLink]="['/estimates', 'details', estimate.EstimateId]">{{estimate.EstimateName}}</a>
+                </td>
+                <td style="text-align: right">{{estimate.Cost |  currency : 'USD' : true : '1.2-2'}}</td>
+                <td style="text-align: right">{{estimate.AddOnCost |  currency : 'USD' : true : '1.2-2'}}</td>
+                <td style="text-align: right">{{estimate.TotalCost |  currency : 'USD' : true : '1.2-2'}}</td>
+                <td style="text-align: right">{{estimate.Effort | number: '1.2-2'}}</td>      
+                <td style="text-align: right">{{estimate.ComponentsCount |  number: '1.0-0'}}</td> 
+                <td>{{estimate.CreationDate | date: 'fullDate'}}</td>
               </tr>
             </tbody>
           </table>

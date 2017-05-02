@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { DropdownModule } from 'ng2-bootstrap/dropdown';
@@ -17,8 +18,9 @@ import { AppRoutingModule } from './app.routing';
 
 //Layouts
 import { FullLayoutComponent } from './layouts/full-layout.component';
-import { EstimateComponent } from './estimate/estimate.component';
-import { EstimateService } from './estimate/estimate.service';
+//import { EstimateComponent } from './estimate/estimate.component';
+import { EstimateService } from './estimates/estimate.service';
+//import { EstimateDetailsComponent } from './estimate/estimate-details/estimate-details.component';
 
 @NgModule({
   imports: [
@@ -26,7 +28,8 @@ import { EstimateService } from './estimate/estimate.service';
     AppRoutingModule,
     DropdownModule.forRoot(),
     TabsModule.forRoot(),
-    ChartsModule
+    ChartsModule,
+    HttpModule
   ],
   declarations: [
     AppComponent,
@@ -34,8 +37,9 @@ import { EstimateService } from './estimate/estimate.service';
     NAV_DROPDOWN_DIRECTIVES,
     BreadcrumbsComponent,
     SIDEBAR_TOGGLE_DIRECTIVES,
-    AsideToggleDirective,
-    EstimateComponent
+    AsideToggleDirective
+//    EstimateComponent,
+//    EstimateDetailsComponent
   ],
   providers: [
     {

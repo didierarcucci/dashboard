@@ -4,7 +4,8 @@ import { Routes, RouterModule } from '@angular/router';
 //Layouts
 import { FullLayoutComponent } from './layouts/full-layout.component';
 
-import { EstimateComponent } from './estimate/estimate.component';
+//import { EstimateComponent } from './estimate/estimate.component';
+//import { EstimateDetailsComponent } from './estimate/estimate-details/estimate-details.component';
 
 export const routes: Routes = [
   {
@@ -25,11 +26,23 @@ export const routes: Routes = [
       },
       {
         path: 'estimates',
+        loadChildren: './estimates/estimates.module#EstimatesModule'
+      }
+      /*
+      {
+        path: 'estimates',
         component: EstimateComponent,
         data: {
-          title: 'Estimates'
+          title: 'Estimate'
         }
-      }
+      },
+      {
+        path: 'estimatedetails', 
+        component: EstimateDetailsComponent, 
+        data: { 
+          title: 'Estimate Details'
+        } 
+      }*/
     ]
   }
 ];
