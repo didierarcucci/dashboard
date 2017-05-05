@@ -17,9 +17,8 @@ export class EstimateService {
   constructor(private router: Router, private http: Http) { }
 
   getRecentEstimates() {
-    //var url = '/api/recentestimates';
-    var url = '/api/order/MED-189';
-    //var url = '/api/Estimate?recordCount=5';
+    var url = '/api/recentestimates';
+    //var url = '/api/Estimate?recordCount=10';
 
     return this.http.get(url)
       .map((res: Response) => res.json())

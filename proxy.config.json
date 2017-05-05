@@ -1,8 +1,7 @@
 {
     "/api/*": {
-        "target": "http://internalstage.essilorlink.com:7683/MED.Service",
         "secure": false,
         "logLevel": "debug",
-        "changeOrigin": true
+        "changeOrigin": true,
     }
 }
