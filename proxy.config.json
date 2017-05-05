@@ -1,9 +1,8 @@
 {
     "/api/*": {
-        "target": "http://localhost:3000",
+        "target": "http://internalstage.essilorlink.com:7683/MED.Service",
         "secure": false,
         "logLevel": "debug",
-        "changeOrigin": true,
-        "pathRewrite": {"^/api" : ""}
+        "changeOrigin": true
     }
 }

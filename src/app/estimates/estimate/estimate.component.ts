@@ -21,16 +21,15 @@ export class EstimateComponent implements OnInit {
     this.estimates = [];
     this.estimateService.getRecentEstimates()
       .subscribe(response => {
+        console.log('*** RESPONSE FROM SERVICE CALL => ' + JSON.stringify(response));
         this.estimates = response
       });
   }
 
-  goToDetails(thisEstimate: Estimate): void {
-    //this.router.navigate(['/estimates', 'details']);
-    console.log('here');
+  goToDetails(pEstimateId: number) {
+    this.router.navigate(['/estimates', 'details', pEstimateId]);
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
 }

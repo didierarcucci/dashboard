@@ -7,6 +7,10 @@
   max-width: 100%;
   margin-bottom: $spacer;
 
+  td {
+    cursor: pointer;
+  }
+
   th,
   td {
     padding: $table-cell-padding;
@@ -26,6 +30,11 @@
   .table {
     background-color: $body-bg;
   }
+
+  .right-align {
+    text-align: right;
+  }
+
 }
 
 
