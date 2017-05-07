@@ -11,19 +11,24 @@ import { EstimateService } from '../estimate.service';
 })
 export class EstimateDetailsComponent implements OnInit, OnDestroy {
 
-  EstimateId: number;
+  EstimateHdr: Estimate;
   private sub: any;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private estimateService: EstimateService) { }
 
-  getEstimateDetails(id: number) {
-    console.log('im here');
+  getEstimateDetails(pId: number) {
+    this.estimateService.getEstimate(pId)
+      .subscribe(response => {
+        console.log('RESPONSE FROM SERVICE CALL => ' + JSON.stringify(response));
+        this.EstimateHdr = response;
+      });
   }
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
-      this.EstimateId = +params['id'];
-      this.getEstimateDetails(this.EstimateId);
+      let estimateId = +params['estimateId'];
+      console.log('ESTIMATE DETAILS ... RETRIEVING ESTIMATEID => ' + estimateId);
+      this.getEstimateDetails(estimateId);
     })
   }
 

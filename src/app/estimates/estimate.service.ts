@@ -12,7 +12,6 @@ import { Estimate } from './estimate';
 
 @Injectable()
 export class EstimateService {
-  //private recentEstimatesUrl = '/api/Estimate?recordCount=5';
 
   constructor(private router: Router, private http: Http) { }
 
@@ -25,8 +24,12 @@ export class EstimateService {
       .catch(this.getError);
   }
 
-  getEstimate(id: number) {
-    return this.http.get('/api/estimatedetails?id=${id}')
+  getEstimate(pId: number) {
+    var url = '/api/estimatedetails/' + pId;
+
+    console.log('... URL TO CALL => ' + url);
+
+    return this.http.get(url)
       .map((res: Response) => res.json())
       .catch(this.getError);
   }
