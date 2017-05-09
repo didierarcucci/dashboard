@@ -27,7 +27,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let estimate of estimates" (click)="goToDetails(estimate.EstimateId)">
+              <tr class="grow clickable" *ngFor="let estimate of estimates" (click)="goToDetails(estimate.EstimateId)">
                 <td>{{estimate.EstimateName}}</td>
                 <td class="right-align">{{estimate.Cost |  currency : 'USD' : true : '1.2-2'}}</td>
                 <td class="right-align">{{estimate.AddOnCost |  currency : 'USD' : true : '1.2-2'}}</td>

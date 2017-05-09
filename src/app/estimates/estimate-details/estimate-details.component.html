@@ -7,40 +7,41 @@
   <div class="row">
     <div class="col-md-2">&nbsp;</div>
   </div>
+  <!-- Estimate card -->
   <div class="row" *ngFor="let estimate of EstimateHdr">
     <div class="col-md-12">
       <div class="card">
-        <div class="card-header">
-          <strong>Estimate Details</strong>
+        <div class="card-header clickable" (click)="toggleContent('estimate')">
+            <strong>Estimate Details</strong>
         </div>
-        <div class="col-md-6 offset-md-3">
+        <div class="col-md-8 offset-md-2" *ngIf="showEstimateContent">
           <div class="card-block">
             <div class="form-group row">
-              <label class="col-md-3"><strong>Estimate Name</strong></label>
+              <label class="col-md-3 right-align"><strong>Estimate Name</strong></label>
               <div class="col-md-3">
                 <p>{{estimate.EstimateName}}</p>
               </div>
-              <label class="col-md-3"><strong>Total Cost</strong></label>
+              <label class="col-md-3 right-align"><strong>Total Cost</strong></label>
               <div class="col-md-3">
                 <p>{{estimate.TotalCost |  currency : 'USD' : true : '1.2-2'}}</p>
               </div>
             </div>
             <div class="form-group row">
-              <label class="col-md-3"><strong>Effort (hrs)</strong></label>
+              <label class="col-md-3 right-align"><strong>Effort (hrs)</strong></label>
               <div class="col-md-3">
                 <p>{{estimate.Effort | number: '1.2-2'}}</p>
               </div>
-              <label class="col-md-3"><strong>Labor Cost</strong></label>
+              <label class="col-md-3 right-align"><strong>Labor Cost</strong></label>
               <div class="col-md-3">
                 <p>{{estimate.Cost |  currency : 'USD' : true : '1.2-2'}}</p>
               </div>
             </div>
             <div class="form-group row">
-              <label class="col-md-3"><strong>Date Created</strong></label>
+              <label class="col-md-3 right-align"><strong>Date Created</strong></label>
               <div class="col-md-3">
                 <p>{{estimate.CreationDate | date: 'fullDate'}}</p>
               </div>
-              <label class="col-md-3"><strong>Add-On Cost</strong></label>
+              <label class="col-md-3 right-align"><strong>Add-On Cost</strong></label>
               <div class="col-md-3">
                 <p>{{estimate.AddOnCost |  currency : 'USD' : true : '1.2-2'}}</p>
               </div>
@@ -50,13 +51,15 @@
       </div>
     </div> <!-- col-md-12 -->
   </div>
+  <!-- Estimate Card -->
+  <!-- Components Card -->
   <div class="row">
     <div class="col-md-12">
       <div class="card">
-        <div class="card-header">
+        <div class="card-header clickable" (click)="toggleContent('components')">
           <strong>Components</strong>
         </div>
-        <div class="card-block">
+        <div class="card-block" *ngIf="showComponentListContent">
           <table class="table table-hover table-condensed">
             <thead>
               <tr>
@@ -81,13 +84,15 @@
       </div>
     </div> <!-- col-md-12 -->
   </div> <!-- main row -->
+  <!-- Components card -->
+  <!-- Roles card -->
   <div class="row">
     <div class="col-md-12">
       <div class="card">
-        <div class="card-header">
+        <div class="card-header clickable" (click)="toggleContent('roles')">
           <strong>Roles</strong>
         </div>
-        <div class="card-block">
+        <div class="card-block" *ngIf="showEstimateRoleListContent">
           <table class="table table-condensed">
             <thead>
               <tr>
@@ -110,4 +115,5 @@
       </div>
     </div> <!-- col-md-12 -->
   </div> <!-- main row -->
+  <!-- Roles card -->
 </div>

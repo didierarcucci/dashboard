@@ -18,10 +18,30 @@ export class EstimateDetailsComponent implements OnInit, OnDestroy {
   ComponentList: EstimateDtlComponent[];
   EstimateRoleList: EstimateRole[];
 
+  showEstimateContent: boolean = true;
+  showComponentListContent: boolean = false;
+  showEstimateRoleListContent: boolean = false;
+
   private sub: any;
 
   constructor(private route: ActivatedRoute, private estimateService: EstimateService) { }
 
+  toggleContent(pCard: string) {
+    console.log('RECEIVED CLICK ON CARD => ' + pCard);
+
+    if(pCard == "estimate") {
+      this.showEstimateContent = !this.showEstimateContent;
+    } else if (pCard == "components") {
+      this.showComponentListContent = !this.showComponentListContent;
+    } else if (pCard == "roles") {
+      this.showEstimateRoleListContent = !this.showEstimateRoleListContent;
+    }
+
+    console.log("SHOW ESTIMATE CONTENT => " + this.showEstimateContent);
+    console.log("SHOW COMPONENT CONTENT => " + this.showComponentListContent);
+    console.log("SHOW ROLE CONTENT => " + this.showEstimateRoleListContent);
+  }
+  
   getEstimateDetails(pId: number) {
     this.estimateService.getEstimate(pId)
       .subscribe(response => {
