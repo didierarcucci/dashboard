@@ -10,6 +10,8 @@ export const ESTIMATES: Estimate[] = [
         Effort: 91,
         ComponentsCount: 1,
         CreationDate: new Date('3/10/2017'),
-        HideContent: true
+        Assumptions: '',
+        InScope: '',
+        OutOfScope: ''
     }
 ]

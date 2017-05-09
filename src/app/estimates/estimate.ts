@@ -7,5 +7,7 @@ export class Estimate {
     Effort: number;
     ComponentsCount: number;
     CreationDate: Date;
-    HideContent: Boolean
+    Assumptions: string;
+    InScope: string;
+    OutOfScope: string;
 }

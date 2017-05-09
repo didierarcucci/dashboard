@@ -18,9 +18,7 @@ import { AppRoutingModule } from './app.routing';
 
 //Layouts
 import { FullLayoutComponent } from './layouts/full-layout.component';
-//import { EstimateComponent } from './estimate/estimate.component';
 import { EstimateService } from './estimates/estimate.service';
-//import { EstimateDetailsComponent } from './estimate/estimate-details/estimate-details.component';
 
 @NgModule({
   imports: [
