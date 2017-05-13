@@ -11,15 +11,22 @@
   <div class="row" *ngFor="let estimate of EstimateHdr">
     <div class="col-md-12">
       <div class="card">
-        <div class="card-header clickable" (click)="toggleContent('estimate')">
-            <strong>Estimate Details</strong>
+        <div class="card-header">
+              <strong>Estimate Details</strong>
+              <i class="fa fa-caret-down float-right clickable" aria-hidden="true" title="Expand" (click)="toggleContent('estimate')" *ngIf="!showEstimateContent"></i>
+              <i class="fa fa-caret-up float-right clickable" aria-hidden="true" title="Collapse" (click)="toggleContent('estimate')" *ngIf="showEstimateContent"></i>
+              <i class="fa fa-pencil float-right clickable" aria-hidden="true" title="Edit Estimate" (click)="setEditMode()" *ngIf="!editMode"></i>
+              <i class="fa fa-floppy-o float-right clickable" aria-hidden="true" title="Save Edits" (click)="setDisplayMode()" *ngIf="editMode"></i>
+              <i class="fa fa-ban float-right clickable" aria-hidden="true" title="Cancel Edits" (click)="setDisplayMode()" *ngIf="editMode"></i>
+              <i class="fa fa-trash-o float-right clickable" aria-hidden="true" title="Delete Estimate" *ngIf="!editMode"></i>
         </div>
         <div class="col-md-8 offset-md-2" *ngIf="showEstimateContent">
           <div class="card-block">
             <div class="form-group row">
               <label class="col-md-3 right-align"><strong>Estimate Name</strong></label>
               <div class="col-md-3">
-                <p>{{estimate.EstimateName}}</p>
+                <p *ngIf="!editMode">{{estimate.EstimateName}}</p>
+                <p *ngIf="editMode"><input type="text" value="{{estimate.EstimateName}}"></p>
               </div>
               <label class="col-md-3 right-align"><strong>Total Cost</strong></label>
               <div class="col-md-3">
@@ -58,6 +65,7 @@
       <div class="card">
         <div class="card-header clickable" (click)="toggleContent('components')">
           <strong>Components</strong>
+          <i class="fa fa-trash-o float-right" aria-hidden="true" title="Delete All Components"></i>
         </div>
         <div class="card-block" *ngIf="showComponentListContent">
           <table class="table table-hover table-condensed">
@@ -71,7 +79,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let component of ComponentList">
+              <tr class="grow clickable" *ngFor="let component of ComponentList" (click)="goToDetails(component.ComponentId)">
                 <td>{{component.ComponentName}}</td>
                 <td>{{component.Complexity}}</td>
                 <td class="right-align">{{component.Effort | number: '1.2-2'}}</td>
@@ -91,6 +99,7 @@
       <div class="card">
         <div class="card-header clickable" (click)="toggleContent('roles')">
           <strong>Roles</strong>
+          <i class="fa fa-trash-o float-right" aria-hidden="true" title="Delete All Assignments"></i>
         </div>
         <div class="card-block" *ngIf="showEstimateRoleListContent">
           <table class="table table-condensed">

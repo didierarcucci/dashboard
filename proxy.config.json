@@ -1,9 +1,16 @@
 {
-    "/api/*": {
+    "/local/*": {
         "target": "http://localhost:3000",
         "secure": false,
         "logLevel": "debug",
         "changeOrigin": true,
-        "pathRewrite": {"^/api" : ""}
+        "pathRewrite": {"^/local" : ""}
+    },
+    "/tibco/*": {
+        "target": " http://uselnkbwd03:57676",
+        "secure": false,
+        "logLevel": "debug",
+        "changeOrigin": true,
+        "pathRewrite": {"^/tibco" : ""}
     }
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { Estimate } from '../estimate';
 import { EstimateDtlComponent } from '../estimatedtl-component';
@@ -22,9 +22,19 @@ export class EstimateDetailsComponent implements OnInit, OnDestroy {
   showComponentListContent: boolean = false;
   showEstimateRoleListContent: boolean = false;
 
+  editMode: boolean = false;
+
   private sub: any;
 
-  constructor(private route: ActivatedRoute, private estimateService: EstimateService) { }
+  constructor(private route: ActivatedRoute, private estimateService: EstimateService, private router: Router) { }
+
+  setEditMode() {
+    this.editMode = true;
+  }
+
+  setDisplayMode() {
+    this.editMode = false;
+  }
 
   toggleContent(pCard: string) {
     console.log('RECEIVED CLICK ON CARD => ' + pCard);
@@ -74,6 +84,11 @@ export class EstimateDetailsComponent implements OnInit, OnDestroy {
       this.getComponentList(estimateId);
       this.getEstimateRoleList(estimateId);
     })
+  }
+
+  goToDetails(pComponentId: number) {
+    console.log('NAVIGATING TO COMPONENT DETAILS ... COMPONENTID: ' + pComponentId);
+    this.router.navigate(['/estimates', 'component', pComponentId]);
   }
 
   ngOnDestroy() {

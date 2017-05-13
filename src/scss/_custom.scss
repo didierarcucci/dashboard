@@ -8,3 +8,16 @@
     -moz-box-shadow: 10px 10px 5px -6px rgba(0,0,0,0.45);
     box-shadow: 10px 10px 5px -6px rgba(0,0,0,0.45);
 }
+textarea {
+    resize: none;
+    border: 0px;
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+}
+
+input {
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+}

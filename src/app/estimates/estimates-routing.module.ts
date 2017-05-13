@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { EstimateComponent } from './estimate/estimate.component';
 import { EstimateDetailsComponent } from './estimate-details/estimate-details.component';
+import { ComponentDetailsComponent } from './component-details/component-details.component';
 
 const routes: Routes = [
   {
@@ -28,6 +29,13 @@ const routes: Routes = [
             component: EstimateDetailsComponent,
             data: {
                 title: 'Estimate Details'
+            }
+        },
+        {
+            path: 'component/:ComponentId',
+            component: ComponentDetailsComponent,
+            data: {
+                title: 'Component Details'
             }
         }
     ]

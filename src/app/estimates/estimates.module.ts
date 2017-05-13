@@ -5,6 +5,7 @@ import { EstimateComponent } from './estimate/estimate.component';
 import { EstimateDetailsComponent } from './estimate-details/estimate-details.component';
 
 import { EstimatesRoutingModule } from './estimates-routing.module';
+import { ComponentDetailsComponent } from './component-details/component-details.component';
 
 @NgModule({
   imports: [
@@ -13,7 +14,8 @@ import { EstimatesRoutingModule } from './estimates-routing.module';
   ],
   declarations: [
     EstimateComponent,
-    EstimateDetailsComponent
+    EstimateDetailsComponent,
+    ComponentDetailsComponent
   ]
 })
 export class EstimatesModule { }
