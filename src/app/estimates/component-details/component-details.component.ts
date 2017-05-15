@@ -15,12 +15,22 @@ export class ComponentDetailsComponent implements OnInit, OnDestroy {
   ComponentHdr: EstimateDtlComponent;
   AssignmentList: Assignment[];
 
-  showComponentContent: Boolean = true;
-  showAssignmentListContent: Boolean = true;
+  showComponentContent: boolean = true;
+  showAssignmentListContent: boolean = false;
+
+  editMode: boolean = false;
 
   private sub: any;
 
   constructor(private route: ActivatedRoute, private estimateService: EstimateService) { }
+
+  setEditMode() {
+    this.editMode = true;
+  }
+
+  setDisplayMode() {
+    this.editMode = false;
+  }
 
   toggleContent(pCard: string) {
     console.log('RECEIVED CLICK ON CARD => ' + pCard);
@@ -31,6 +41,7 @@ export class ComponentDetailsComponent implements OnInit, OnDestroy {
       this.showAssignmentListContent = !this.showAssignmentListContent;
     }
 
+    console.log("SHOW COMPONENT CONTENT => " + this.showComponentContent);
     console.log("SHOW ASSIGNMENTS CONTENT => " + this.showAssignmentListContent);
   }
 

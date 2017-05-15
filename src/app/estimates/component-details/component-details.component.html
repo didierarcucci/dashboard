@@ -1,68 +1,69 @@
 <div class="animated fadeIn">
   <div class="row">
-    <div class="col-md-2">
-      <button type="button" class="btn btn-primary">New Component</button>
+    <div class="col-md-12">
+      <button type="button" class="btn btn-primary">New component</button>
+      <button type="button" class="btn btn-primary">Clone component</button>
+      <button type="button" class="btn btn-primary">Change assignments</button>
     </div>
   </div>
   <div class="row">
     <div class="col-md-2">&nbsp;</div>
   </div>
   <!-- Component card -->
-  <div class="row" *ngFor="let component of ComponentHdr">
+  <div class="row">
     <div class="col-md-12">
-      <div class="card">
-        <div class="card-header clickable" (click)="toggleContent('component')">
+      <div class="card" *ngFor="let component of ComponentHdr">
+        <div class="card-header">
             <strong>Component Details</strong>
-            <i class="fa fa-trash-o float-right" aria-hidden="true" title="Delete Component"></i>
-            <i class="fa fa-pencil float-right" aria-hidden="true" title="Edit Component"></i>
+            <div class="card-actions">
+              <a class="btn-close clickable" title="Delete this component"><i class="fa fa-trash-o fa-lg"></i></a>
+              <a class="btn-minimize clickable" (click)="toggleContent('component')" *ngIf="showComponentContent" title="Collapse content"><i class="fa fa-caret-up fa-lg"></i></a>
+              <a class="btn-minimize clickable" (click)="toggleContent('component')" *ngIf="!showComponentContent" title="Expand content"><i class="fa fa-caret-down fa-lg"></i></a>
+            </div>
         </div>
-        <div class="col-md-8 offset-md-2" *ngIf="showComponentContent">
+        <div *ngIf="showComponentContent">
           <div class="card-block">
-            <div class="form-group row">
-              <label class="col-md-3 right-align"><strong>Component Name</strong></label>
-              <div class="col-md-3">
-                <p>{{component.ComponentName}}</p>
+            <form action="" method="post">
+              <div class="form-group row">
+                <label class="col-md-2 form-control-label" for="componentname">Component Name</label>
+                <div class="col-md-10">
+                  <input id="componentname" name="componentname" class="form-control" type="text" value="{{component.ComponentName}}">
+                </div>
               </div>
-              <label class="col-md-3 right-align"><strong>Complexity</strong></label>
-              <div class="col-md-3">
-                <p>{{component.Complexity}}</p>
+              <div class="form-group row">
+                <label class="col-md-2 form-control-label" for="complexity">Complexity</label>
+                <div class="col-md-1">
+                  <input id="complexity" name="complexity" class="form-control" type="text" value="{{component.Complexity}}">
+                </div>
               </div>
-            </div>
-            <div class="form-group row">
-              <label class="col-md-3 right-align"><strong>Effort (hrs)</strong></label>
-              <div class="col-md-3">
-                <p>{{component.Effort | number: '1.2-2'}}</p>
+              <div class="form-group row">
+                <label class="col-md-2 form-control-label">Effort (hrs)</label>
+                <div class="col-md-2">
+                  <p class="form-control-static">{{component.Effort | number: '1.2-2'}}</p>
+                </div>
               </div>
-              <label class="col-md-3 right-align"><strong>Cost</strong></label>
-              <div class="col-md-3">
-                <p>{{component.Cost |  currency : 'USD' : true : '1.2-2'}}</p>
+              <div class="form-group row">
+                <label class="col-md-2 form-control-label">Cost</label>
+                <div class="col-md-3">
+                  <p class="form-control-static">{{component.Cost |  currency : 'USD' : true : '1.2-2'}}</p>
+                </div>
               </div>
-            </div>
-            <div class="form-group row">
-              <label class="col-md-3 right-align"><strong>Date Created</strong></label>
-              <div class="col-md-3">
-                <p>{{component.CreationDate | date: 'fullDate'}}</p>
+              <div class="form-group row">
+                <label class="col-md-2 form-control-label" for="notes-input">Notes</label>
+                <div class="col-md-10">
+                  <textarea id="notes-input" name="notes-input" class="form-control" rows="5">{{component.Notes}}</textarea>
+                </div>
               </div>
-              <label class="col-md-3 right-align"><strong>Date Updated</strong></label>
-              <div class="col-md-3">
-                <p>{{component.UpdateDate | date: 'fullDate'}}</p>
-              </div>
-            </div>
-            <div class="form-group row">
-              <label class="col-md-3 right-align"><strong>Created By</strong></label>
-              <div class="col-md-3">
-                <p>{{component.CreatedBy}}</p>
-              </div>
-              <label class="col-md-3 right-align"><strong>Updated By</strong></label>
-              <div class="col-md-3">
-                <p>{{component.UpdatedBy}}</p>
-              </div>
-            </div>
-            <div class="form-group row">
-              <label class="col-md-3 right-align"><strong>Notes</strong></label>
-              <textarea readonly class="col-md-9">{{component.Notes}}</textarea>
+            </form>
+            <div class="row">
+              <label class="col-md-4">Created on&nbsp;{{component.CreationDate | date: 'fullDate'}}&nbsp;by&nbsp;{{component.CreatedBy}}</label>
+              <label class="col-md-4">Updated on&nbsp;{{component.UpdateDate | date: 'fullDate'}}&nbsp;by&nbsp;{{component.UpdatedBy}}</label>
             </div>
           </div> <!-- card block -->
+          <div class="card-footer">
+            <button type="submit" class="btn btn-sm btn-primary">Save changes</button>
+            <button type="reset" class="btn btn-sm btn-danger">Undo</button>
+          </div>
         </div>
       </div>
     </div> <!-- col-md-12 -->
@@ -70,31 +71,37 @@
   <div class="row"> <!-- Assignment Card -->
     <div class="col-md-12">
       <div class="card">
-        <div class="card-header clickable" (click)="toggleContent('assignments')">
+        <div class="card-header">
           <strong>Assignments</strong>
-          <i class="fa fa-trash-o float-right" aria-hidden="true" title="Delete All Assignments"></i>
+          <div class="card-actions">
+            <a class="btn-close clickable" title="Delete all assignments"><i class="fa fa-trash-o fa-lg"></i></a>
+            <a class="btn-minimize clickable" (click)="toggleContent('assignments')" *ngIf="showAssignmentListContent" title="Collapse content"><i class="fa fa-caret-up fa-lg"></i></a>
+            <a class="btn-minimize clickable" (click)="toggleContent('assignments')" *ngIf="!showAssignmentListContent" title="Expand content"><i class="fa fa-caret-down fa-lg"></i></a>
+          </div>
         </div>
-        <div class="card-block" *ngIf="showAssignmentListContent">
-          <table class="table table-condensed">
-            <thead>
-              <tr>
-                <th>SDLC Phase</th>
-                <th>Role</th>
-                <th class="right-align">Assigned Hours</th>
-                <th class="right-align">Hourly Rate</th>
-                <th class="right-align">Total</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let assignment of AssignmentList">
-                <td>{{assignment.SDLCPhase}}</td>
-                <td>{{assignment.RoleName}}</td>
-                <td class="right-align">{{assignment.AssignedHours | number: '1.2-2'}}</td>
-                <td class="right-align">{{assignment.HourlyRate |  currency : 'USD' : true : '1.2-2'}}</td>
-                <td class="right-align">{{assignment.Total |  currency : 'USD' : true : '1.2-2'}}</td>
-              </tr>
-            </tbody>
-          </table>
+        <div *ngIf="showAssignmentListContent">
+          <div class="card-block">
+            <table class="table table-condensed">
+              <thead>
+                <tr>
+                  <th>SDLC Phase</th>
+                  <th>Role</th>
+                  <th class="right-align">Assigned Hours</th>
+                  <th class="right-align">Hourly Rate</th>
+                  <th class="right-align">Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let assignment of AssignmentList">
+                  <td>{{assignment.SDLCPhase}}</td>
+                  <td>{{assignment.RoleName}}</td>
+                  <td class="right-align">{{assignment.AssignedHours | number: '1.2-2'}}</td>
+                  <td class="right-align">{{assignment.HourlyRate |  currency : 'USD' : true : '1.2-2'}}</td>
+                  <td class="right-align">{{assignment.Total |  currency : 'USD' : true : '1.2-2'}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div> <!-- col-md-12 -->
