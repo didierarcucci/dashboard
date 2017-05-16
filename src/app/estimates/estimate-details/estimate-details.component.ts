@@ -24,9 +24,13 @@ export class EstimateDetailsComponent implements OnInit, OnDestroy {
 
   editMode: boolean = false;
 
+  pdfMode: boolean = false;
+
   private sub: any;
 
-  constructor(private route: ActivatedRoute, private estimateService: EstimateService, private router: Router) { }
+  constructor(private route: ActivatedRoute, private estimateService: EstimateService, private router: Router) { 
+    this.pdfMode = false;
+  }
 
   setEditMode() {
     this.editMode = true;
@@ -89,6 +93,12 @@ export class EstimateDetailsComponent implements OnInit, OnDestroy {
   goToDetails(pComponentId: number) {
     console.log('NAVIGATING TO COMPONENT DETAILS ... COMPONENTID: ' + pComponentId);
     this.router.navigate(['/estimates', 'component', pComponentId]);
+  }
+
+  goToEstimatePDF(pEstimateId: number) {
+    console.log('NAVIGATING TO ESTIMATEPDF ... ESTIMATEID: ' + pEstimateId);
+    //this.router.navigate(['/estimates', 'estimatepdf', pEstimateId]);
+    this.pdfMode = true;
   }
 
   ngOnDestroy() {

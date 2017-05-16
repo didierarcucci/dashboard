@@ -1,8 +1,10 @@
-<div class="animated fadeIn">
+<div *ngIf="!pdfMode">
+<div class="animated fadeIn" *ngFor="let estimate of EstimateHdr">
   <div class="row">
     <div class="col-md-12">
       <button type="button" class="btn btn-primary">New Estimate</button>
       <button type="button" class="btn btn-primary">Clone Estimate</button>
+      <button type="button" class="btn btn-primary" (click)="goToEstimatePDF(estimate.EstimateId)">Generate PDF</button>
     </div>
   </div>
   <div class="row">
@@ -11,7 +13,7 @@
   <!-- Estimate + Roles row -->
   <div class="row">
     <div class="col-md-12">
-      <div class="card" *ngFor="let estimate of EstimateHdr">
+      <div class="card">
         <div class="card-header">
           <strong>Estimate Details</strong>
           <div class="card-actions">
@@ -64,19 +66,11 @@
                   </div>
                 </div>
               </div>
-              <div class="form-group row">
-                <label class="col-md-2 form-control-label">Created On</label>
-                <div class="col-md-10">
-                  <p class="form-control-static">{{estimate.CreationDate | date: 'fullDate'}}</p>
-                </div>
-              </div>
-              <div class="form-group row">
-                <label class="col-md-2">Updated On</label>
-                <div class="col-md-10">
-                  <p class="form-control-static">{{estimate.UpdateDate | date: 'fullDate'}}</p>
-                </div>
-              </div>
             </form>
+            <div class="row">
+              <label class="col-md-4">Created on&nbsp;{{estimate.CreationDate | date: 'fullDate'}}&nbsp;by&nbsp;{{estimate.CreatedBy}}</label>
+              <label class="col-md-4">Updated on&nbsp;{{estimate.UpdateDate | date: 'fullDate'}}&nbsp;by&nbsp;{{estimate.UpdatedBy}}</label>
+            </div>
           </div> <!-- card block -->
           <div class="card-footer">
             <button type="submit" class="btn btn-sm btn-primary">Save Changes</button>
@@ -160,4 +154,12 @@
     </div> <!-- col-md-12 -->
   </div>
   <!-- Roles Card -->
+</div>
+</div>
+
+<!-- HTML FOR PRINTING -->
+<div *ngIf="pdfMode">
+  <div class="animated fadeIn" *ngFor="let estimate of EstimateHdr">
+    <p>It works!!</p>
+  </div>
 </div>

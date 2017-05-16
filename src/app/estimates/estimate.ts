@@ -7,7 +7,11 @@ export class Estimate {
     Effort: number;
     ComponentsCount: number;
     CreationDate: Date;
+    UpdateDate: Date;
+    CreatedBy: string;
+    UpdatedBy: string;
     Assumptions: string;
     InScope: string;
     OutOfScope: string;
+    InitativeName: string;
 }
