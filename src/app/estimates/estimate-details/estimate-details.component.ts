@@ -1,5 +1,8 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, ViewChild, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { ModalDirective } from 'ngx-bootstrap/modal/modal.component';
+
+
 
 import { Estimate } from '../estimate';
 import { EstimateDtlComponent } from '../estimatedtl-component';
@@ -13,6 +16,15 @@ import { EstimateService } from '../estimate.service';
   styleUrls: ['./estimate-details.component.scss']
 })
 export class EstimateDetailsComponent implements OnInit, OnDestroy {
+
+  public myModal;
+  public largeModal;
+  public smallModal;
+  public primaryModal;
+  public successModal;
+  public warningModal;
+  public dangerModal;
+  public infoModal;
 
   EstimateHdr: Estimate;
   ComponentList: EstimateDtlComponent[];

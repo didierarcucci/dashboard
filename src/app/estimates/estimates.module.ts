@@ -7,10 +7,13 @@ import { EstimateDetailsComponent } from './estimate-details/estimate-details.co
 import { EstimatesRoutingModule } from './estimates-routing.module';
 import { ComponentDetailsComponent } from './component-details/component-details.component';
 
+import { ModalModule } from 'ngx-bootstrap';
+
 @NgModule({
   imports: [
     CommonModule,
-    EstimatesRoutingModule
+    EstimatesRoutingModule,
+    ModalModule
   ],
   declarations: [
     EstimateComponent,

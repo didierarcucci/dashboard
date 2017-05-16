@@ -1,15 +1,28 @@
 // Here you can add other styles
 .clickable { cursor: pointer; }
+
 .right-align { text-align: right; }
+
 .grow { transition: all .3s ease-in-out; }
+
 .grow:hover { 
     transform: scale(1.05);
     -webkit-box-shadow: 10px 10px 5px -6px rgba(0,0,0,0.45);
     -moz-box-shadow: 10px 10px 5px -6px rgba(0,0,0,0.45);
     box-shadow: 10px 10px 5px -6px rgba(0,0,0,0.45);
 }
+
 input {
     font-family: inherit;
     font-size: inherit;
     color: inherit;
+}
+
+.card-header-pdfestimate {
+    background-color: darken($brand-primary, 15%);
+    color: #fff;
+}
+
+.pdfestimate-header {
+    color: darken($brand-primary, 5%);
 }
