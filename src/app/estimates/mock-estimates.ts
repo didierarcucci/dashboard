@@ -16,6 +16,6 @@ export const ESTIMATES: Estimate[] = [
         Assumptions: 'These are the assumptions',
         InScope: 'These are the items in scope',
         OutOfScope: 'These are the items out of scope',
-        InitativeName: 'The iniative'
+        InitiativeName: 'The iniative'
     }
 ]

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { LocationStrategy, HashLocationStrategy, DatePipe } from '@angular/common';
 import { HttpModule } from '@angular/http';
 import { ModalModule } from 'ngx-bootstrap';
 
@@ -19,6 +19,7 @@ import { AppRoutingModule } from './app.routing';
 
 //Layouts
 import { FullLayoutComponent } from './layouts/full-layout.component';
+
 import { EstimateService } from './estimates/estimate.service';
 
 @NgModule({
@@ -42,9 +43,10 @@ import { EstimateService } from './estimates/estimate.service';
   providers: [
     {
       provide: LocationStrategy,
-      useClass: HashLocationStrategy
+      useClass: HashLocationStrategy,
     },
-    EstimateService
+    EstimateService,
+    DatePipe
   ],
   bootstrap: [ AppComponent ]
 })

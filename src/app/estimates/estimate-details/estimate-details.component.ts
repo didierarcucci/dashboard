@@ -1,6 +1,7 @@
 import { Component, ViewChild, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ModalDirective } from 'ngx-bootstrap/modal/modal.component';
+import { DatePipe } from '@angular/common';
 
 
 
@@ -34,23 +35,9 @@ export class EstimateDetailsComponent implements OnInit, OnDestroy {
   showComponentListContent: boolean = false;
   showEstimateRoleListContent: boolean = false;
 
-  editMode: boolean = false;
-
-  pdfMode: boolean = false;
-
   private sub: any;
 
-  constructor(private route: ActivatedRoute, private estimateService: EstimateService, private router: Router) { 
-    this.pdfMode = false;
-  }
-
-  setEditMode() {
-    this.editMode = true;
-  }
-
-  setDisplayMode() {
-    this.editMode = false;
-  }
+  constructor(private route: ActivatedRoute, private estimateService: EstimateService, private router: Router, private datepipe: DatePipe) { }
 
   toggleContent(pCard: string) {
     console.log('RECEIVED CLICK ON CARD => ' + pCard);
@@ -107,10 +94,78 @@ export class EstimateDetailsComponent implements OnInit, OnDestroy {
     this.router.navigate(['/estimates', 'component', pComponentId]);
   }
 
-  goToEstimatePDF(pEstimateId: number) {
-    console.log('NAVIGATING TO ESTIMATEPDF ... ESTIMATEID: ' + pEstimateId);
-    //this.router.navigate(['/estimates', 'estimatepdf', pEstimateId]);
-    this.pdfMode = true;
+  printEstimate(pEstimate: Estimate) {
+    let printContents, popupWin, formattedDate;
+
+    formattedDate = this.datepipe.transform(pEstimate.UpdateDate, 'yyyymmdd');
+    
+    printContents = document.getElementById('printableEstimate').innerHTML;
+    
+    popupWin = window.open('', '_blank', 'top=0,left=0,height=auto,width=auto');
+    popupWin.document.open();
+
+    popupWin.document.write(
+      `
+      <html>
+        <head>
+          <title>IS Estimate ${pEstimate.EstimateName} ${formattedDate}</title>
+          <style>
+            body {
+              font-family: Sans-Serif;
+            }
+
+            h1 {
+                color: #1F497D;
+                font-style: italic;
+            }
+            
+            h2 {
+                color: #808080;
+                vertical-align: top;
+            }
+            
+            h3 {
+                color: #1F497D;
+            }
+            
+            table.tabstyle {
+                border-width: 1px;
+                border-color: #4F81BD;
+                border-collapse: collapse;
+            }
+            
+            table.tabstyle th {
+                background-color: #4F81BD;
+                color: #FFFFFF;
+                padding: 7px;
+                border-color: #4F81BD;
+            }
+            
+            table.tabstyle td {
+                padding: 7px;
+                border-color: #4F81BD;
+                border: 1px solid #4F81BD;
+            }
+            
+            table.tabstyle tr:nth-child(even) td{
+                background-color: #DCE6F1;
+            }
+            
+            table.tabstyle tr:last-child td{
+                background-color: #FFFFFF;
+                border-top: double;
+                border-color: #4F81BD;
+                font-weight: bold;
+                text-align: right;
+            }
+          </style>
+        </head>
+        <body>${printContents}</body>
+      </html>
+      `
+    );
+
+    popupWin.document.close();
   }
 
   ngOnDestroy() {

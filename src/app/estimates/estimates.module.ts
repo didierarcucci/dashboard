@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 
 import { EstimateComponent } from './estimate/estimate.component';
 import { EstimateDetailsComponent } from './estimate-details/estimate-details.component';
@@ -19,6 +19,9 @@ import { ModalModule } from 'ngx-bootstrap';
     EstimateComponent,
     EstimateDetailsComponent,
     ComponentDetailsComponent
+  ],
+  providers: [
+    DatePipe
   ]
 })
 export class EstimatesModule { }

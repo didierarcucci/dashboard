@@ -13,5 +13,5 @@ export class Estimate {
     Assumptions: string;
     InScope: string;
     OutOfScope: string;
-    InitativeName: string;
+    InitiativeName: string;
 }

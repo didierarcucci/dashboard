@@ -1,11 +1,10 @@
-<div *ngIf="!pdfMode">
+<div>
   <div class="animated fadeIn" *ngFor="let estimate of EstimateHdr">
     <div class="row">
       <div class="col-md-12">
         <button type="button" class="btn btn-primary">New Estimate</button>
         <button type="button" class="btn btn-primary">Clone Estimate</button>
-        <button type="button" class="btn btn-primary" (click)="goToEstimatePDF(estimate.EstimateId)">Generate PDF</button>
-        <button type="button" class="btn btn-primary" data-toggle="modal" (click)="myModal.show()">Generate PDF (modal)</button>
+        <button type="button" class="btn btn-primary" (click)="printEstimate(estimate)">Print Estimate</button>
       </div>
     </div>
     <div class="row">
@@ -161,7 +160,8 @@
 
 
 <!-- HTML FOR PRINTING -->
-<div *ngIf="pdfMode">
+<!--
+<div id="printableEstimate" style="display: none">
   <div class="animated fadeIn" *ngFor="let estimate of EstimateHdr">
     <div class="row">
       <div class="col-md-12">
@@ -227,11 +227,11 @@
           </div>
         </div>
       </div>
-    </div> <!-- row -->
+    </div>
     <div class="row">
       <div class="col-md-12">
         <div class="card">
-          <div class="card-header card-header-pdfestimate">
+          <div class="card-header pdfestimate-card-header">
             <strong>Component Breakdown</strong>
           </div>
           <div class="card-block">
@@ -255,14 +255,12 @@
             </table>
           </div>
         </div>
-      </div> <!-- col-md -->
-    </div> <!-- row -->
-    <!-- Components card -->
-    <!-- Roles card -->
+      </div>
+    </div>
     <div class="row">
       <div class="col-md-12">
         <div class="card">
-          <div class="card-header card-header-pdfestimate">
+          <div class="card-header pdfestimate-card-header">
             <strong>Role Breakdown</strong>
           </div>
           <div class="card-block">
@@ -286,27 +284,111 @@
             </table>
           </div>
         </div>
-      </div> <!-- col-md -->
-    </div> <!-- row -->
-  </div> <!-- animated fadein -->
+      </div>
+    </div>
+  </div>
 </div>
+-->
 
-<div bsModal #myModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title">Modal title</h4>
-        <button type="button" class="close" (click)="myModal.hide()" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p>One fine body&hellip;</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" (click)="myModal.hide()">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+<div id="printableEstimate" style="display: none" *ngFor="let estimate of EstimateHdr">
+  <table>
+    <tr>
+      <td colspan="2"><h1>Integration Solutions&nbsp;-&nbsp;{{estimate.InitiativeName}}</h1></td>
+    </tr>
+    <tr><td colspan="2">&nbsp;</td></tr>
+    <tr>
+      <td style="white-space:nowrap; vertical-align:top"><h2>Estimate Name:</h2></td>
+      <td><h3>{{estimate.EstimateName}}</h3></td>
+    </tr>
+    <tr>
+      <td style="white-space:nowrap; vertical-align:top"><h2>Estimate Date:</h2></td>
+      <td><h3>{{estimate.UpdateDate | date: 'fullDate'}}</h3></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td style="vertical-align:top"><h2>Total Cost:</h2></td>
+      <td><h3>{{estimate.TotalCost |  currency : 'USD' : true : '1.2-2'}}&nbsp;(Labor:&nbsp;{{estimate.Cost |  currency : 'USD' : true : '1.2-2'}},&nbsp;Add-Ons:&nbsp;{{estimate.AddOnCost |  currency : 'USD' : true : '1.2-2'}})</h3></td>
+    </tr>
+    <tr>
+      <td style="vertical-align:top"><h2>Total Effort (hrs):</h2></td>
+      <td><h3>{{estimate.Effort | number: '1.2-2'}}</h3></td>
+    </tr>
+  </table>
+  <br/>
+  <table>
+    <tr><td><h2>In Scope:</h2></td></tr>
+    <tr><td style="padding-left:2em; white-space: pre;">{{estimate.InScope}}</td></tr>
+    <tr><td>&nbsp;</td></tr>
+    <tr><td><h2>Out of Scope:</h2></td></tr>
+    <tr><td style="padding-left:2em; white-space: pre;">{{estimate.OutOfScope}}</td></tr>
+    <tr><td>&nbsp;</td></tr>
+    <tr><td><h2>Assumptions:</h2></td></tr>
+    <tr><td style="padding-left:2em; white-space: pre;">{{estimate.Assumptions}}<br/></td></tr>
+  </table>
+  <br/>
+  <br/>
+  <h2>Breakdown by Component:</h2>
+  <table border="1" class="tabstyle">
+      <tr>
+          <th style="text-align: left">Components</th>
+          <th style="text-align: right">Effort</th>
+          <th style="text-align: right">Cost</th>
+          <th style="text-align: left">Notes</th>
+      </tr>
+      <tr *ngFor="let component of ComponentList">
+          <td style="text-align: left; white-space:nowrap">{{component.ComponentName}}</td>
+          <td align="right">{{component.Effort | number: '1.2-2'}}</td>
+          <td align="right">{{component.Cost |  currency : 'USD' : true : '1.2-2'}}</td>
+          <td>{{component.Notes}}</td>
+      </tr>
+      <tr>
+          <td>Components Total</td>
+          <td></td>
+          <td></td>
+          <td>&nbsp;</td>
+      </tr>
+  </table>
+  <br/> 
+  <br/>
+  <h2>Breakdown by Role:</h2>
+  <table border="1" class="tabstyle">
+      <tr>
+          <th style="text-align: left">Role</th>
+          <th style="text-align: right">Total (hrs)</th>
+          <th style="text-align: right">Rate/hr</th>
+          <th style="text-align: right">Total ($)</th>
+      </tr>
+      <tr *ngFor="let role of EstimateRoleList">
+          <td style="text-align: left">{{role.RoleName}}</td>
+          <td align="right">{{role.Effort | number: '1.2-2'}}</td>
+          <td align="right">{{role.HourlyRate |  currency : 'USD' : true : '1.2-2'}}</td>
+          <td class="right">{{role.Cost |  currency : 'USD' : true : '1.2-2'}}</td>
+      </tr>
+      <tr>
+          <td>Grand Total</td>
+          <td></td>
+          <td></td>
+          <td></td>
+      </tr>
+  </table>
+  <!--
+  <h2>Add-Ons:</h2>
+  <table border="1" class="tabstyle">
+      <tr>
+          <th>Add-On</th>
+          <th>Total</th>
+      </tr>
+      <tr>
+          <td></td>
+          <td align="right"></td>
+      </tr>
+      <tr>
+          <td>Grand Total</td>
+          <td></td>
+      </tr>
+  </table>
+  -->
+</div>
