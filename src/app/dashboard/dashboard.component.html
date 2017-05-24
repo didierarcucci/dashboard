@@ -1,33 +1,56 @@
 <div class="animated fadeIn">
-    <!--
-    <iframe style="width: 100%; height: 100vh; border: 0 none" src="https://analytics.essilorlink.com/ViewAnalysis.aspx?file=/ELINK/ISSL/ISSL%20Mobile%20Dashboard&configurationBlock=SetPage%28pageIndex%3D2%29%3B&options=7-0,8-0,9-0,10-0,11-0,12-0,13-0,14-0,1-0,2-0,3-0,4-0,5-0,6-0,15-0"></iframe> -->
-
     <div class="row">
-        <div class="col-sm-6 col-lg-3">
-            <div class="social-box">
-                <!--
-                <div class="chart-wrapper">
-                    <ngx-charts-number-card
-                        [view]="view"
-                        [scheme]="colorScheme"
-                        [results]="dash"
-                        (select)="onSelect($event)">
-                    </ngx-charts-number-card>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    YTD Project Hours
                 </div>
-                -->
-                <ul>
-                <li>
-                    <strong>89k</strong>
-                    <span>friends</span>
-                </li>
-                <li>
-                    <strong>459</strong>
-                    <span>feeds</span>
-                </li>
-                </ul>
+                <div class="card-block">
+                    <div class="chart-wrapper">
+                        <ngx-charts-bar-vertical
+                            class="col-md-12"
+                            [view]=""
+                            [scheme]="colorScheme"
+                            [results]="yoyprjhrs"
+                            [gradient]="false"
+                            [xAxis]="true"
+                            [yAxis]="true"
+                            [legend]="false"
+                            [showXAxisLabel]="true"
+                            [showYAxisLabel]="true"
+                            [xAxisLabel]="'Year'"
+                            [yAxisLabel]="'Hours'"
+                            (select)="onSelect($event)">
+                        </ngx-charts-bar-vertical>
+                    </div>
+                </div>
             </div>
-            <!--/.social-box-->
-        </div><!--/.col-->
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    YTD Project Dollars
+                </div>
+                <div class="card-block">
+                    <div class="chart-wrapper">
+                        <ngx-charts-bar-vertical
+                            class="col-md-12"
+                            [view]=""
+                            [scheme]="colorScheme"
+                            [results]="yoyprjdls"
+                            [gradient]="false"
+                            [xAxis]="true"
+                            [yAxis]="true"
+                            [legend]="false"
+                            [showXAxisLabel]="true"
+                            [showYAxisLabel]="true"
+                            [xAxisLabel]="'Year'"
+                            [yAxisLabel]="'Dollars'"
+                            (select)="onSelect($event)">
+                        </ngx-charts-bar-vertical>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-
 </div>
