@@ -3,25 +3,58 @@
         <div class="col-md-4">
             <div class="card">
                 <div class="card-header">
-                    YTD Project Hours
+                    Hours charged to projects
                 </div>
                 <div class="card-block">
-                    <div class="chart-wrapper">
-                        <ngx-charts-bar-vertical
-                            class="col-md-12"
-                            [view]=""
-                            [scheme]="colorScheme"
-                            [results]="yoyprjhrs"
-                            [gradient]="false"
-                            [xAxis]="true"
-                            [yAxis]="true"
-                            [legend]="false"
-                            [showXAxisLabel]="true"
-                            [showYAxisLabel]="true"
-                            [xAxisLabel]="'Year'"
-                            [yAxisLabel]="'Hours'"
-                            (select)="onSelect($event)">
-                        </ngx-charts-bar-vertical>
+                    <div class="row">
+                        <div class="col-md-6 center-align table-cell-rightborder">
+                            <h4>10,573</h4>
+                            <p>Year-to-date</p>
+                        </div>
+                        <div class="col-md-6 center-align">
+                            <h4>+10%</h4>
+                            <p>vs last year</p>
+                        </div>
+                    </div>
+                    <div class="row table-cell-bottomborder">
+                        <span>&nbsp;</span>
+                    </div>
+                    <div class="row">
+                        <div class="chart-wrapper" style="height: 300px">
+                            <ngx-charts-bar-vertical
+                                [scheme]="colorScheme"
+                                [results]="yoyprjhrs"
+                                [gradient]="false"
+                                [xAxis]="true"
+                                [yAxis]="true"
+                                [legend]="false"
+                                [showXAxisLabel]="false"
+                                [showYAxisLabel]="false"
+                                [xAxisLabel]="'Year'"
+                                [yAxisLabel]="'Hours'"
+                                (select)="onSelect($event)">
+                            </ngx-charts-bar-vertical>
+                        </div>
+                    </div>
+                    <div class="row table-cell-bottomborder">
+                        <span>&nbsp;</span>
+                    </div>
+                    <div class="row">
+                        <div class="chart-wrapper" style="height: 300px">
+                            <ngx-charts-bar-vertical-normalized
+                                [scheme]="'cool'"
+                                [results]="yoyprjhrsrestyp"
+                                [gradient]="false"
+                                [xAxis]="true"
+                                [yAxis]="true"
+                                [legend]="false"
+                                [showXAxisLabel]="false"
+                                [showYAxisLabel]="false"
+                                [xAxisLabel]="'Year'"
+                                [yAxisLabel]="'Hours'"
+                                (select)="onSelect($event)">
+                            </ngx-charts-bar-vertical-normalized>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -29,25 +62,117 @@
         <div class="col-md-4">
             <div class="card">
                 <div class="card-header">
-                    YTD Project Dollars
+                    Dollars charged to projects
                 </div>
                 <div class="card-block">
-                    <div class="chart-wrapper">
-                        <ngx-charts-bar-vertical
-                            class="col-md-12"
-                            [view]=""
-                            [scheme]="colorScheme"
-                            [results]="yoyprjdls"
-                            [gradient]="false"
-                            [xAxis]="true"
-                            [yAxis]="true"
-                            [legend]="false"
-                            [showXAxisLabel]="true"
-                            [showYAxisLabel]="true"
-                            [xAxisLabel]="'Year'"
-                            [yAxisLabel]="'Dollars'"
-                            (select)="onSelect($event)">
-                        </ngx-charts-bar-vertical>
+                    <div class="row">
+                        <div class="col-md-6 center-align table-cell-rightborder">
+                            <h4>$776k</h4>
+                            <p>Year-to-date</p>
+                        </div>
+                        <div class="col-md-6 center-align">
+                            <h4>+11%</h4>
+                            <p>vs last year</p>
+                        </div>
+                    </div>
+                    <div class="row table-cell-bottomborder">
+                        <span>&nbsp;</span>
+                    </div>
+                    <div class="row">
+                        <div class="chart-wrapper" style="height: 300px">
+                            <ngx-charts-bar-vertical
+                                [scheme]="colorScheme"
+                                [results]="yoyprjdls"
+                                [gradient]="false"
+                                [xAxis]="true"
+                                [yAxis]="true"
+                                [legend]="false"
+                                [showXAxisLabel]="false"
+                                [showYAxisLabel]="false"
+                                [xAxisLabel]="'Year'"
+                                [yAxisLabel]="'Dollars'"
+                                (select)="onSelect($event)">
+                            </ngx-charts-bar-vertical>
+                        </div>
+                    </div>
+                    <div class="row table-cell-bottomborder">
+                        <span>&nbsp;</span>
+                    </div>
+                    <div class="row">
+                        <div class="chart-wrapper" style="height: 300px">
+                            <ngx-charts-bar-vertical-normalized
+                                [scheme]="'cool'"
+                                [results]="yoyprjdlsrestyp"
+                                [gradient]="false"
+                                [xAxis]="true"
+                                [yAxis]="true"
+                                [legend]="false"
+                                [showXAxisLabel]="false"
+                                [showYAxisLabel]="false"
+                                [xAxisLabel]="'Year'"
+                                [yAxisLabel]="'Hours'"
+                                (select)="onSelect($event)">
+                            </ngx-charts-bar-vertical-normalized>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    Capitalization
+                </div>
+                <div class="card-block">
+                    <div class="row">
+                        <div class="col-md-6 center-align table-cell-rightborder">
+                            <h4>$232k</h4>
+                            <p>Year-to-date</p>
+                        </div>
+                        <div class="col-md-6 center-align">
+                            <h4>+28%</h4>
+                            <p>vs budget</p>
+                        </div>
+                    </div>
+                    <div class="row table-cell-bottomborder">
+                        <span>&nbsp;</span>
+                    </div>
+                    <div class="row">
+                        <div class="chart-wrapper" style="height: 300px">
+                            <ngx-charts-bar-vertical
+                                [scheme]="colorScheme"
+                                [results]="yoycapdls"
+                                [gradient]="false"
+                                [xAxis]="true"
+                                [yAxis]="true"
+                                [legend]="false"
+                                [showXAxisLabel]="false"
+                                [showYAxisLabel]="false"
+                                [xAxisLabel]="'Year'"
+                                [yAxisLabel]="'Dollars'"
+                                (select)="onSelect($event)">
+                            </ngx-charts-bar-vertical>
+                        </div>
+                    </div>
+                    <div class="row table-cell-bottomborder">
+                        <span>&nbsp;</span>
+                    </div>
+                    <div class="row">
+                        <div class="chart-wrapper" style="height: 300px">
+                            <ngx-charts-bar-vertical-2d
+                                [scheme]="'cool'"
+                                [results]="yoycapbymo"
+                                [gradient]="false"
+                                [xAxis]="true"
+                                [yAxis]="true"
+                                [legend]="false"
+                                [showXAxisLabel]="false"
+                                [showYAxisLabel]="false"
+                                [xAxisLabel]="'Month'"
+                                [yAxisLabel]="'Dollars'"
+                                (select)="onSelect($event)">
+                            </ngx-charts-bar-vertical-2d>
+                        </div>
                     </div>
                 </div>
             </div>

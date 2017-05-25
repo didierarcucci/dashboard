@@ -2,6 +2,7 @@
 .clickable { cursor: pointer; }
 
 .right-align { text-align: right; }
+.center-align { text-align: center; }
 
 .grow { transition: all .3s ease-in-out; }
 
@@ -25,4 +26,16 @@ input {
 
 .pdfestimate-header {
     color: darken($brand-primary, 5%);
+}
+
+.table-cell-rightborder {
+    border-right: 1px solid #cfd8dc;
+}
+
+.table-cell-bottomborder {
+    border-bottom: 1px solid #cfd8dc
+}
+
+.size-halfway {
+    width: 50%;
 }
