@@ -175,3 +175,68 @@ export var yoycapbymo = [
         ]
     }
 ];
+
+export var prjhrspermo = [
+    {
+        name: "2016",
+        series: [
+            {
+                name: "Jan",
+                value: 1760
+            },
+            {
+                name: "Feb",
+                value: 2029
+            },
+            {
+                name: "Mar",
+                value: 2130
+            },
+            {
+                name: "Apr",
+                value: 1932
+            },
+            {
+                name: "May",
+                value: 1454
+            }
+        ]
+    },
+    {
+        name: "2017",
+        series: [
+            {
+                name: "Jan",
+                value: 2210
+            },
+            {
+                name: "Feb",
+                value: 1943
+            },
+            {
+                name: "Mar",
+                value: 2312
+            },
+            {
+                name: "Apr",
+                value: 2280
+            },
+            {
+                name: "May",
+                value: 1828
+            }
+        ]
+    }
+];
+
+//Ng2 charts
+export var prjhrspermo2: Array<any> = [
+    {
+      data: [1760, 2029, 2130, 1932, 1454],
+      label: '2016'
+    },
+    {
+      data: [2210, 1943, 2312, 2280, 1828],
+      label: '2017'
+    }
+];
