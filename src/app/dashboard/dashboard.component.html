@@ -2,9 +2,14 @@
     <div class="row">
         <div class="col-md-4">
             <div class="card card-inverse card-primary">
+                <div class="card-header">
+                    <span>Project hours</span>
+                </div>
                 <div class="card-block pb-0">
-                    <h4 class="mb-0">10,573 (+10%)</h4>
-                    <p>Project hours Year-to-date</p>
+                    <div>
+                        <h4 class="mb-0">10,573</h4>
+                        <p>Year-to-date</p>
+                    </div>
                 </div>
                 <div class="chart-wrapper px-1" style="height:70px;">
                     <canvas baseChart class="chart"
@@ -18,63 +23,65 @@
                         (chartClick)="chartClicked($event)">
                     </canvas>
                 </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4">
-            <div class="card">
-                <div class="card-header">
-                    Hours charged to projects
-                </div>
-                <div class="card-block">
-                    <div class="row">
-                        <div class="col-md-6 center-align table-cell-rightborder">
-                            <h4>10,573</h4>
-                            <p>Year-to-date</p>
-                        </div>
-                        <div class="col-md-6 center-align">
-                            <h4>+10%</h4>
-                            <p>vs last year</p>
-                        </div>
+                <div class="card-footer">
+                    <div class="float-right">
+                        <span>+10% vs last year</span>
                     </div>
                 </div>
             </div>
         </div>
         <div class="col-md-4">
-            <div class="card">
+            <div class="card card-inverse card-primary">
                 <div class="card-header">
-                    Dollars charged to projects
+                    Project dollars
                 </div>
-                <div class="card-block">
-                    <div class="row">
-                        <div class="col-md-6 center-align table-cell-rightborder">
-                            <h4>$776k</h4>
-                            <p>Year-to-date</p>
-                        </div>
-                        <div class="col-md-6 center-align">
-                            <h4>+11%</h4>
-                            <p>vs last year</p>
-                        </div>
+                <div class="card-block pb-0">
+                    <h4 class="mb-0">$776k</h4>
+                    <p>Year-to-date</p>
+                </div>
+                <div class="chart-wrapper px-1" style="height:70px;">
+                    <canvas baseChart class="chart"
+                        [datasets]="prjhrspermo2"
+                        [labels]="lineChartLabels"
+                        [options]="lineChartOptions"
+                        [colors]="lineChartColours"
+                        [legend]="false"
+                        [chartType]="'line'"
+                        (chartHover)="chartHovered($event)"
+                        (chartClick)="chartClicked($event)">
+                    </canvas>
+                </div>
+                <div class="card-footer">
+                    <div class="float-right">
+                        <span>+11% vs last year</span>
                     </div>
                 </div>
             </div>
         </div>
         <div class="col-md-4">
-            <div class="card">
+            <div class="card card-inverse card-primary">
                 <div class="card-header">
                     Capitalization
                 </div>
-                <div class="card-block">
-                    <div class="row">
-                        <div class="col-md-6 center-align table-cell-rightborder">
-                            <h4>$232k</h4>
-                            <p>Year-to-date</p>
-                        </div>
-                        <div class="col-md-6 center-align">
-                            <h4>+28%</h4>
-                            <p>vs budget</p>
-                        </div>
+                <div class="card-block pb-0">
+                    <h4 class="mb-0">$232k</h4>
+                    <p>Year-to-date</p>
+                </div>
+                <div class="chart-wrapper px-1" style="height:70px;">
+                    <canvas baseChart class="chart"
+                        [datasets]="prjhrspermo2"
+                        [labels]="lineChartLabels"
+                        [options]="lineChartOptions"
+                        [colors]="lineChartColours"
+                        [legend]="false"
+                        [chartType]="'line'"
+                        (chartHover)="chartHovered($event)"
+                        (chartClick)="chartClicked($event)">
+                    </canvas>
+                </div>
+                <div class="card-footer">
+                    <div class="float-right">
+                        <span>+28% vs budget</span>
                     </div>
                 </div>
             </div>
