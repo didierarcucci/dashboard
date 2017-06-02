@@ -1,17 +1,18 @@
 <div class="animated fadeIn">
     <div class="row">
-        <div class="col-md-4">
-            <div class="card card-inverse card-primary">
-                <div class="card-header">
-                    <span>Project hours</span>
-                </div>
+        <div class="col-md-3">
+            <div class="card card-primary card-inverse">
                 <div class="card-block pb-0">
                     <div>
+                        <p>Project work</p>
                         <h4 class="mb-0">10,573</h4>
                         <p>Year-to-date</p>
                     </div>
+                    <div class="float-right">
+                        <p>+10% vs last year</p>
+                    </div>
                 </div>
-                <div class="chart-wrapper px-1" style="height:70px;">
+                <div class="chart-wrapper px-1" style="height:70px;" hidden>
                     <canvas baseChart class="chart"
                         [datasets]="prjhrspermo2"
                         [labels]="lineChartLabels"
@@ -23,23 +24,62 @@
                         (chartClick)="chartClicked($event)">
                     </canvas>
                 </div>
-                <div class="card-footer">
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card card-primary card-inverse">
+                <div class="card-block pb-0">
+                    <div>
+                        <p>Capitalization</p>
+                        <h4 class="mb-0">$232k</h4>
+                        <p>Year-to-date</p>
+                    </div>
                     <div class="float-right">
-                        <span>+10% vs last year</span>
+                        <p>+28% vs budget</p>
+                    </div>
+                </div>
+                <div class="chart-wrapper px-1" style="height:70px;" hidden>
+                    <canvas baseChart class="chart"
+                        [datasets]="prjhrspermo2"
+                        [labels]="lineChartLabels"
+                        [options]="lineChartOptions"
+                        [colors]="lineChartColours"
+                        [legend]="false"
+                        [chartType]="'line'"
+                        (chartHover)="chartHovered($event)"
+                        (chartClick)="chartClicked($event)">
+                    </canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card card-primary card-inverse">
+                <div class="card-block pb-0">
+                    <div>
+                        <p>Resource Mix</p>
+                        <h4 class="mb-0">8 out of 10</h4>
+                        <p>Contractors</p>
+                    </div>
+                    <div class="float-right">
+                        <p>+18% vs last year</p>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="card card-inverse card-primary">
-                <div class="card-header">
-                    Project dollars
-                </div>
+        
+        <div class="col-md-3">
+            <div class="card card-primary card-inverse">
                 <div class="card-block pb-0">
-                    <h4 class="mb-0">$776k</h4>
-                    <p>Year-to-date</p>
+                    <div>
+                        <p>Hourly Rate</p>
+                        <h4 class="mb-0">$73.63</h4>
+                        <p>Year-to-date</p>
+                    </div>
+                    <div class="float-right">
+                        <p>+4% vs last year, -21% vs reference</p>
+                    </div>
                 </div>
-                <div class="chart-wrapper px-1" style="height:70px;">
+                <div class="chart-wrapper px-1" style="height:70px;" hidden>
                     <canvas baseChart class="chart"
                         [datasets]="prjhrspermo2"
                         [labels]="lineChartLabels"
@@ -50,43 +90,37 @@
                         (chartHover)="chartHovered($event)"
                         (chartClick)="chartClicked($event)">
                     </canvas>
-                </div>
-                <div class="card-footer">
-                    <div class="float-right">
-                        <span>+11% vs last year</span>
-                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="card card-inverse card-primary">
-                <div class="card-header">
-                    Capitalization
-                </div>
-                <div class="card-block pb-0">
-                    <h4 class="mb-0">$232k</h4>
-                    <p>Year-to-date</p>
-                </div>
-                <div class="chart-wrapper px-1" style="height:70px;">
-                    <canvas baseChart class="chart"
-                        [datasets]="prjhrspermo2"
-                        [labels]="lineChartLabels"
-                        [options]="lineChartOptions"
-                        [colors]="lineChartColours"
-                        [legend]="false"
-                        [chartType]="'line'"
-                        (chartHover)="chartHovered($event)"
-                        (chartClick)="chartClicked($event)">
-                    </canvas>
-                </div>
-                <div class="card-footer">
-                    <div class="float-right">
-                        <span>+28% vs budget</span>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-block">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h5 class="card-title mb-0">Project work</h5>
+                            <div class="small text-muted">2 years view</div>
+                        </div>
+                    </div>
+                    <div class="chart-wrapper" style="height: 300px; margin: 0 auto; margin-top: 40px;">
+                        <canvas baseChart class="chart"
+                            [datasets]="prjhrs"
+                            [labels]="mainChartLabels"
+                            [options]="mainChartOptions"
+                            [colors]="mainChartColours"
+                            [legend]="false"
+                            [chartType]="'line'"
+                            (chartHover)="chartHovered($event)"
+                            (chartClick)="chartClicked($event)">
+                        </canvas>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <!--
     <div class="row">
         <div class="col-md-4">
             <div class="card">
@@ -210,4 +244,5 @@
             </div>
         </div>
     </div>
+    -->
 </div>

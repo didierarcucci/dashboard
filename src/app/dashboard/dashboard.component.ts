@@ -19,6 +19,17 @@ export class DashboardComponent implements OnInit {
   yoycapbymo: any[];
   prjhrspermo: any[];
 
+  // convert Hex to RGBA
+  public convertHex(hex: string, opacity: number) {
+    hex = hex.replace('#', '');
+    const r = parseInt(hex.substring(0, 2), 16);
+    const g = parseInt(hex.substring(2, 4), 16);
+    const b = parseInt(hex.substring(4, 6), 16);
+
+    const rgba = 'rgba(' + r + ', ' + g + ', ' + b + ', ' + opacity / 100 + ')';
+    return rgba;
+  }
+
   constructor( ) {
     Object.assign(this, {ytdprjhrs});
     Object.assign(this, {yoyprjhrs});
@@ -83,6 +94,25 @@ export class DashboardComponent implements OnInit {
     }
   ];
 
+  public prjhrs: Array<any> = [
+    {
+      data: [1693.2, 1921.6, 1377.3, 1333.8, 1722.6, 1359.4, 1636.8, 1760, 2029.2, 2129.8, 1932, 2061.8, 2352, 1850.65, 2321.6, 2019.5, 1856.6, 2097.6, 2034.2, 2210.4, 1942.6, 2312.4, 2279.6, 2519.7],
+      label: 'Project work'
+    },
+    {
+      data: [1822, 1822, 1822, 1822, 1822, 1822, 1822, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN],
+      label: 'Avg 2015'
+    },
+    {
+      data: [NaN, NaN, NaN, NaN, NaN, NaN, NaN, 2037, 2037, 2037, 2037, 2037, 2037, 2037, 2037, 2037, 2037, 2037, 2037, NaN, NaN, NaN, NaN, NaN],
+      label: 'Avg 2016'
+    },
+    {
+      data: [NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, NaN, 2253, 2253, 2253, 2253, 2253],
+      label: 'Avg 2017'
+    }
+  ];
+
   public lineChartColours: Array<any> = [
     { // grey
       backgroundColor: '#20a8d8',
@@ -91,8 +121,12 @@ export class DashboardComponent implements OnInit {
   ];
 
   public lineChartLabels: Array<any> = ['January', 'February', 'March', 'April', 'May'];
+  public mainChartLabels: Array<any> = ['Jun-15', 'Jul-15', 'Aug-15', 'Sep-15','Oct-15', 'Nov-15', 'Dec-15',
+                                        'Jan-16', 'Feb-16', 'Mar-16', 'Apr-16', 'May-16', 'Jun-16', 'Jul-16', 'Aug-16', 'Sep-16','Oct-16', 'Nov-16', 'Dec-16',
+                                        'Jan-17', 'Feb-17', 'Mar-17', 'Apr-17', 'May-17'];
 
   public lineChartOptions: any = {
+    responsive: true,
     maintainAspectRatio: false,
     scales: {
       xAxes: [{
@@ -126,7 +160,6 @@ export class DashboardComponent implements OnInit {
     legend: {
       display: false
     },
-    responsive: true,
     animation: {
         onComplete: function () {
             var chartInstance = this.chart,
@@ -145,4 +178,69 @@ export class DashboardComponent implements OnInit {
         }
     }
   };
+
+  public mainChartOptions: any = {
+    responsive: true,
+    maintainAspectRatio: false,
+    scales: {
+      xAxes: [
+        {
+          gridLines: { // removes vertical lines
+            drawOnChartArea: false,
+          },
+          ticks: {
+            minRotation: 45
+          }
+        }
+      ],
+      yAxes: [{
+        ticks: {
+          beginAtZero: false,
+          maxTicksLimit: 5,
+          stepSize: Math.ceil(1400 / 5),
+          max: 2600,
+          min: 1200
+        }
+      }]
+    },
+    elements: {
+      line: {
+        borderWidth: 2
+      },
+      point: {
+        radius: 0,
+        hitRadius: 10,
+        hoverRadius: 4,
+        hoverBorderWidth: 3,
+      }
+    }
+  }; 
+
+   public mainChartColours: Array<any> = [
+    {
+      backgroundColor: this.convertHex('#63c2de', 10),
+      borderColor: '#63c2de'
+    },
+    {
+      backgroundColor: 'transparent',
+      borderColor: '#f86c6b',
+      pointHoverBackgroundColor: '#fff',
+      borderWidth: 1,
+      borderDash: [8, 5]
+    },
+    {
+      backgroundColor: 'transparent',
+      borderColor: '#f86c6b',
+      pointHoverBackgroundColor: '#fff',
+      borderWidth: 1,
+      borderDash: [8, 5]
+    },
+    {
+      backgroundColor: 'transparent',
+      borderColor: '#f86c6b',
+      pointHoverBackgroundColor: '#fff',
+      borderWidth: 1,
+      borderDash: [8, 5]
+    }
+  ];
 }
