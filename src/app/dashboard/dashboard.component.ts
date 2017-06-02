@@ -30,6 +30,14 @@ export class DashboardComponent implements OnInit {
     return rgba;
   }
 
+  private randomArray (length: number, max: number): Array<any> {
+    var res = [];
+    for (var i = 0; i<length; i++) {
+      res.push(Math.round(Math.random() * max));
+    }
+    return res;
+  }
+
   constructor( ) {
     Object.assign(this, {ytdprjhrs});
     Object.assign(this, {yoyprjhrs});
@@ -243,4 +251,18 @@ export class DashboardComponent implements OnInit {
       borderDash: [8, 5]
     }
   ];
+
+  public regionValues: Array<any> = [
+    {
+      data: [68,41,31,73,84,31,68,25,66,42],
+      label: 'My Array'
+    }
+  ]
+
+  public regionArray: Array<any> = ['Region1', 'Region2', 'Region3', 'Region4', 'Region5', 'Region6', 'Region7', 'Region8', 'Region9', 'Region10'];
+
+  public barChartOptions: any = {
+    responsive: true,
+    maintainAspectRatio: false
+  }; 
 }

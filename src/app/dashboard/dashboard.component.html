@@ -9,7 +9,7 @@
                         <p>Year-to-date</p>
                     </div>
                     <div class="float-right">
-                        <p>+10% vs last year</p>
+                        <p>+10% vs last year<br/>&nbsp;</p>
                     </div>
                 </div>
                 <div class="chart-wrapper px-1" style="height:70px;" hidden>
@@ -35,7 +35,7 @@
                         <p>Year-to-date</p>
                     </div>
                     <div class="float-right">
-                        <p>+28% vs budget</p>
+                        <p>+28% vs budget<br/>&nbsp;</p>
                     </div>
                 </div>
                 <div class="chart-wrapper px-1" style="height:70px;" hidden>
@@ -61,7 +61,7 @@
                         <p>Contractors</p>
                     </div>
                     <div class="float-right">
-                        <p>+18% vs last year</p>
+                        <p>+18% vs last year<br/>&nbsp;</p>
                     </div>
                 </div>
             </div>
@@ -76,7 +76,7 @@
                         <p>Year-to-date</p>
                     </div>
                     <div class="float-right">
-                        <p>+4% vs last year, -21% vs reference</p>
+                        <p>+4% vs last year<br/>-21% vs reference</p>
                     </div>
                 </div>
                 <div class="chart-wrapper px-1" style="height:70px;" hidden>
@@ -112,6 +112,30 @@
                             [colors]="mainChartColours"
                             [legend]="false"
                             [chartType]="'line'"
+                            (chartHover)="chartHovered($event)"
+                            (chartClick)="chartClicked($event)">
+                        </canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-block">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h5 class="card-title mb-0">Test bar chart</h5>
+                        </div>
+                    </div>
+                    <div class="chart-wrapper" style="height: 300px; margin: 0 auto; margin-top: 40px;">
+                        <canvas baseChart class="chart"
+                            [datasets]="regionValues"
+                            [labels]="regionArray"
+                            [options]="barChartOptions"
+                            [legend]="false"
+                            [chartType]="'bar'"
                             (chartHover)="chartHovered($event)"
                             (chartClick)="chartClicked($event)">
                         </canvas>
