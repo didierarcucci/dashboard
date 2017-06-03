@@ -14,4 +14,22 @@ export class Estimate {
     InScope: string;
     OutOfScope: string;
     InitiativeName: string;
+
+    constructor(
+        pEstimateName: string,
+        pAssumptions?: string,
+        pInScope?: string,
+        pOutOfScope?: string
+    ) {
+        this.EstimateName = pEstimateName;
+        this.Assumptions = pAssumptions;
+        this.InScope = pInScope;
+        this.OutOfScope = pOutOfScope;
+        //
+        this.CreationDate = new Date();
+        this.UpdateDate = this.CreationDate;
+        //
+        this.CreatedBy = 'Didier Arcucci';
+        this.UpdatedBy = 'Didier Arcucci';
+    }
 }

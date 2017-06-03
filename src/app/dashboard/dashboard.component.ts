@@ -1,23 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import * as d3 from 'd3-shape';
-
-
-import { ytdprjhrs, yoyprjhrs, yoyprjdls, yoycapdls, yoyprjhrsrestyp, yoyprjdlsrestyp, yoycapbymo, prjhrspermo } from './mock-dashboard';
 
 @Component({
   templateUrl: 'dashboard.component.html'
 })
 export class DashboardComponent implements OnInit {
-
-  ytdprjhrs: any[];
-  yoyprjhrs: any[];
-  yoyprjdls: any[];
-  yoycapdls: any[];
-  yoyprjhrsrestyp: any[];
-  yoyprjdlsrestyp: any[];
-  yoycapbymo: any[];
-  prjhrspermo: any[];
 
   // convert Hex to RGBA
   public convertHex(hex: string, opacity: number) {
@@ -38,16 +25,7 @@ export class DashboardComponent implements OnInit {
     return res;
   }
 
-  constructor( ) {
-    Object.assign(this, {ytdprjhrs});
-    Object.assign(this, {yoyprjhrs});
-    Object.assign(this, {yoyprjdls});
-    Object.assign(this, {yoycapdls});
-    Object.assign(this, {yoyprjhrsrestyp});
-    Object.assign(this, {yoyprjdlsrestyp});
-    Object.assign(this, {yoycapbymo});
-    Object.assign(this, {prjhrspermo});
-   }
+  constructor( ) { }
 
    onSelect(event) {
     console.log(event);
@@ -64,19 +42,6 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() { }
 
-  // Ngx charts options
-  view: any[] = [700, 400];
-
-  showYAxis = true;
-  showXAxis = true;
-  gradient = false;
-  showLegend = false;
-  showXAxisLabel = true;
-  showYAxisLabel = true;
-  xAxisLabel = 'Year';
-  yAxisLabel = 'Hours';
-  colorScheme = "ocean";
-
   currencyFormat(val: any): any {
     return val.toLocaleString('en-EN', {style: 'currency', currency: 'USD'});
   }
@@ -84,15 +49,6 @@ export class DashboardComponent implements OnInit {
   percentFormat(val: any): any {
     return val+'%';
   }
-
-  curveType(context: any): any {
-    return d3.curveNatural(context);
-  }
-
-  /* colorScheme = {
-    domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
-  };
-  */
 
   // Ng2 charts options
   public prjhrspermo2: Array<any> = [
