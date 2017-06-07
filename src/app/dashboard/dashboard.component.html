@@ -1,95 +1,47 @@
 <div class="animated fadeIn">
     <div class="row">
         <div class="col-md-3">
-            <div class="card card-primary card-inverse">
+            <div class="card card-accent-success">
                 <div class="card-block pb-0">
-                    <div>
-                        <p>Project work</p>
-                        <h4 class="mb-0">10,573</h4>
-                        <p>Year-to-date</p>
-                    </div>
-                    <div class="float-right">
-                        <p>+10% vs last year<br/>&nbsp;</p>
-                    </div>
-                </div>
-                <div class="chart-wrapper px-1" style="height:70px;" hidden>
-                    <canvas baseChart class="chart"
-                        [datasets]="prjhrspermo2"
-                        [labels]="lineChartLabels"
-                        [options]="lineChartOptions"
-                        [colors]="lineChartColours"
-                        [legend]="false"
-                        [chartType]="'line'"
-                        (chartHover)="chartHovered($event)"
-                        (chartClick)="chartClicked($event)">
-                    </canvas>
+                    <p>PROJECT WORK</p>
+                    <i class="fa fa-briefcase fa-3x float-right text-muted" aria-hidden="true"></i>
+                    <h3 class="mb-0 text-muted">10,573</h3>
+                    <p>Year-to-date</p>
+                    <p>+10% yoy</p>
                 </div>
             </div>
         </div>
         <div class="col-md-3">
-            <div class="card card-primary card-inverse">
+            <div class="card card-accent-success">
                 <div class="card-block pb-0">
-                    <div>
-                        <p>Capitalization</p>
-                        <h4 class="mb-0">$232k</h4>
-                        <p>Year-to-date</p>
-                    </div>
-                    <div class="float-right">
-                        <p>+28% vs budget<br/>&nbsp;</p>
-                    </div>
-                </div>
-                <div class="chart-wrapper px-1" style="height:70px;" hidden>
-                    <canvas baseChart class="chart"
-                        [datasets]="prjhrspermo2"
-                        [labels]="lineChartLabels"
-                        [options]="lineChartOptions"
-                        [colors]="lineChartColours"
-                        [legend]="false"
-                        [chartType]="'line'"
-                        (chartHover)="chartHovered($event)"
-                        (chartClick)="chartClicked($event)">
-                    </canvas>
+                    <p>CAPITALIZATION</p>
+                    <i class="fa fa-usd fa-3x float-right text-muted" aria-hidden="true"></i>
+                    <h3 class="mb-0 text-muted">$232k</h3>
+                    <p>Year-to-date</p>
+                    <p>+28% vs budget</p>
                 </div>
             </div>
         </div>
         <div class="col-md-3">
-            <div class="card card-primary card-inverse">
+            <div class="card card-accent-warning">
                 <div class="card-block pb-0">
-                    <div>
-                        <p>Resource Mix</p>
-                        <h4 class="mb-0">8 out of 10</h4>
-                        <p>Contractors</p>
-                    </div>
-                    <div class="float-right">
-                        <p>+18% vs last year<br/>&nbsp;</p>
-                    </div>
+                    <p>RESOURCE MIX</p>
+                    <i class="fa fa-users fa-3x float-right text-muted" aria-hidden="true"></i>
+                    <h3 class="mb-0 text-muted">64%</h3>
+                    <p>Onsite</p>
+                    <p>+45% yoy</p>
                 </div>
             </div>
         </div>
         
         <div class="col-md-3">
-            <div class="card card-primary card-inverse">
+            <div class="card card-accent-success">
                 <div class="card-block pb-0">
-                    <div>
-                        <p>Hourly Rate</p>
-                        <h4 class="mb-0">$73.63</h4>
-                        <p>Year-to-date</p>
-                    </div>
-                    <div class="float-right">
-                        <p>+4% vs last year<br/>-21% vs reference</p>
-                    </div>
-                </div>
-                <div class="chart-wrapper px-1" style="height:70px;" hidden>
-                    <canvas baseChart class="chart"
-                        [datasets]="prjhrspermo2"
-                        [labels]="lineChartLabels"
-                        [options]="lineChartOptions"
-                        [colors]="lineChartColours"
-                        [legend]="false"
-                        [chartType]="'line'"
-                        (chartHover)="chartHovered($event)"
-                        (chartClick)="chartClicked($event)">
-                    </canvas>
+                    <p>HOURLY RATE</p>
+                    <i class="fa fa-hourglass-start fa-3x float-right text-muted" aria-hidden="true"></i>
+                    <h3 class="mb-0 text-muted">$73.63</h3>
+                    <p>Year-to-date</p>
+                    <p>+4% yoy, -21% vs ref</p>
                 </div>
             </div>
         </div>
@@ -100,8 +52,26 @@
                 <div class="card-block">
                     <div class="row">
                         <div class="col-md-4">
-                            <h5 class="card-title mb-0">Project work</h5>
+                            <h5 class="card-title mb-0">Evolution over time</h5>
                             <div class="small text-muted">2 years view</div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="btn-toolbar float-right" role="toolbar" aria-label="Toolbar with button groups">
+                                <div class="btn-group mr-3" data-toggle="buttons" aria-label="First group">
+                                    <label class="btn btn-outline-secondary active">
+                                        <input type="radio" name="options" id="option1"> Project Work
+                                    </label>
+                                    <label class="btn btn-outline-secondary">
+                                        <input type="radio" name="options" id="option2" checked> Capitalization
+                                    </label>
+                                    <label class="btn btn-outline-secondary">
+                                        <input type="radio" name="options" id="option3"> Resource Mix
+                                    </label>
+                                    <label class="btn btn-outline-secondary">
+                                        <input type="radio" name="options" id="option3"> Hourly Rate
+                                    </label>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="chart-wrapper" style="height: 300px; margin: 0 auto; margin-top: 40px;">
