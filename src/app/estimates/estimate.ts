@@ -1,19 +1,22 @@
 export class Estimate {
     EstimateId: number;
     EstimateName: string;
-    Cost: number;
+    InitiativeId: number;
+    InitiativeName: string;
     AddOnCost: number;
-    TotalCost: number;
-    Effort: number;
-    ComponentsCount: number;
-    CreationDate: Date;
-    UpdateDate: Date;
-    CreatedBy: string;
-    UpdatedBy: string;
     Assumptions: string;
     InScope: string;
     OutOfScope: string;
-    InitiativeName: string;
+    CreationDate: Date;
+    UpdateDate: Date;
+    CreatedBy: number;
+    CreatedByName: string;
+    UpdatedBy: number;
+    UpdatedByName: string;
+    ComponentsCount: number;
+    Effort: number;
+    Cost: number;
+    TotalCost: number;
 
     constructor(
         pEstimateName: string,
@@ -29,7 +32,8 @@ export class Estimate {
         this.CreationDate = new Date();
         this.UpdateDate = this.CreationDate;
         //
-        this.CreatedBy = 'Didier Arcucci';
-        this.UpdatedBy = 'Didier Arcucci';
+        // will need to retrieve the user id through the login
+        this.CreatedBy = 1;
+        this.UpdatedBy = 1;
     }
 }

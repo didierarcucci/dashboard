@@ -4,10 +4,12 @@ export class EstimateDtlComponent {
     ComponentName: string;
     Complexity: string;
     CreationDate: Date;
+    CreatedBy: number;
     UpdateDate: Date;
-    CreatedBy: string;
-    UpdatedBy: string;
+    UpdatedBy: number;
+    Notes: string;
     Effort: number;
     Cost: number;
-    Notes: string;
+    CreatedByName: string;
+    UpdatedByName: string;
 }

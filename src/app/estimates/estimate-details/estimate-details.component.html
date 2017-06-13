@@ -1,15 +1,5 @@
 <div>
   <div class="animated fadeIn" *ngFor="let estimate of EstimateHdr">
-    <div class="row">
-      <div class="col-md-12">
-        <button type="button" class="btn btn-primary">New Estimate</button>
-        <button type="button" class="btn btn-primary">Clone Estimate</button>
-        <button type="button" class="btn btn-primary" (click)="printEstimate(estimate)">Print Estimate</button>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-2">&nbsp;</div>
-    </div>
     <!-- Estimate + Roles row -->
     <div class="row">
       <div class="col-md-12">
@@ -17,6 +7,8 @@
           <div class="card-header">
             <strong>Estimate Details</strong>
             <div class="card-actions">
+              <a class="btn-close clickable" title="Print this estimate" (click)="printEstimate(estimate)"><i class="fa fa-print fa-lg"></i></a>
+              <a class="btn-close clickable" title="Clone this estimate"><i class="fa fa-clone fa-lg"></i></a>
               <a class="btn-close clickable" title="Delete this estimate"><i class="fa fa-trash-o fa-lg"></i></a>
               <a class="btn-minimize clickable" (click)="toggleContent('estimate')" *ngIf="showEstimateContent" title="Collapse content"><i class="fa fa-caret-up fa-lg"></i></a>
               <a class="btn-minimize clickable" (click)="toggleContent('estimate')" *ngIf="!showEstimateContent" title="Expand content"><i class="fa fa-caret-down fa-lg"></i></a>
@@ -68,8 +60,8 @@
                 </div>
               </form>
               <div class="row">
-                <label class="col-md-4">Created on&nbsp;{{estimate.CreationDate | date: 'fullDate'}}&nbsp;by&nbsp;{{estimate.CreatedBy}}</label>
-                <label class="col-md-4">Updated on&nbsp;{{estimate.UpdateDate | date: 'fullDate'}}&nbsp;by&nbsp;{{estimate.UpdatedBy}}</label>
+                <label class="col-md-4">Created on&nbsp;{{estimate.CreationDate | date: 'fullDate'}}&nbsp;by&nbsp;{{estimate.CreatedByName}}</label>
+                <label class="col-md-4">Updated on&nbsp;{{estimate.UpdateDate | date: 'fullDate'}}&nbsp;by&nbsp;{{estimate.UpdatedByName}}</label>
               </div>
             </div> <!-- card block -->
             <div class="card-footer">

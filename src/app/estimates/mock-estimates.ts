@@ -1,5 +1,6 @@
 import { Estimate } from './estimate';
 
+/*
 export const ESTIMATES: Estimate[] = [
     {
         EstimateId: 1234,
@@ -19,3 +20,4 @@ export const ESTIMATES: Estimate[] = [
         InitiativeName: 'The iniative'
     }
 ]
+*/
