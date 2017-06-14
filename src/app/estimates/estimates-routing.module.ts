@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { EstimateComponent } from './estimate/estimate.component';
 import { EstimateDetailsComponent } from './estimate-details/estimate-details.component';
 import { ComponentDetailsComponent } from './component-details/component-details.component';
+import { NewEstimateComponent } from './newestimate/newestimate.component';
 
 const routes: Routes = [
   {
@@ -36,6 +37,13 @@ const routes: Routes = [
             component: ComponentDetailsComponent,
             data: {
                 title: 'Component Details'
+            }
+        },
+        {
+            path: 'newestimate',
+            component: NewEstimateComponent,
+            data: {
+                title: 'New Estimate'
             }
         }
     ]

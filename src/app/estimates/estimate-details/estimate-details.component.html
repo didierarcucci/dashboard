@@ -16,11 +16,11 @@
           </div>
           <div *ngIf="showEstimateContent">
             <div class="card-block">
-              <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+              <form action="" method="post" enctype="multipart/form-data" class="form-horizontal" #estimateform="ngForm">
                 <div class="form-group row">
                   <label class="col-md-2 form-control-label" for="estimatename">Estimate Name</label>
                   <div class="col-md-6">
-                    <input id="estimatename" name="estimatename" class="form-control" type="text" value="{{estimate.EstimateName}}">
+                    <input id="estimatename" name="estimatename" class="form-control" type="text" [(ngModel)]="estimate.EstimateName">
                   </div>
                 </div>
                 <div class="form-group row">
@@ -42,19 +42,19 @@
                   <div class="col-md-4">
                     <div class="form-group">
                       <label class="form-control-label" for="assumptions-input">Assumptions</label>
-                      <textarea id="assumptions-input" name="assumptions-input" class="form-control" rows="5">{{estimate.Assumptions}}</textarea>
+                      <textarea id="assumptions-input" name="assumptions-input" class="form-control" rows="5" [(ngModel)]="estimate.Assumptions"></textarea>
                     </div>
                   </div>
                   <div class="col-md-4">
                     <div class="form-group">
                       <label class="form-control-label" for="inscope-input">In Scope</label>
-                      <textarea id="inscope-input" name="inscope-input" class="form-control" rows="5">{{estimate.InScope}}</textarea>
+                      <textarea id="inscope-input" name="inscope-input" class="form-control" rows="5" [(ngModel)]="estimate.InScope"></textarea>
                     </div>
                   </div>
                   <div class="col-md-4">
                     <div class="form-group">
                       <label class="form-control-label" for="outofscope-input">Out Of Scope</label>
-                      <textarea id="outofscope-input" name="outofscope-input" class="form-control" rows="5">{{estimate.OutOfScope}}</textarea>
+                      <textarea id="outofscope-input" name="outofscope-input" class="form-control" rows="5" [(ngModel)]="estimate.OutOfScope">{</textarea>
                     </div>
                   </div>
                 </div>
@@ -66,7 +66,7 @@
             </div> <!-- card block -->
             <div class="card-footer">
               <button type="submit" class="btn btn-sm btn-primary">Save Changes</button>
-              <button type="reset" class="btn btn-sm btn-danger">Undo</button>
+              <button type="reset" class="btn btn-sm btn-danger" (click)="reset()">Undo</button>
             </div>
           </div>
         </div>

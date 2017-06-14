@@ -30,6 +30,7 @@ export class EstimateDetailsComponent implements OnInit, OnDestroy {
   EstimateHdr: Estimate;
   ComponentList: EstimateDtlComponent[];
   EstimateRoleList: EstimateRole[];
+  estimateId: number;
 
   showEstimateContent: boolean = true;
   showComponentListContent: boolean = false;
@@ -81,17 +82,21 @@ export class EstimateDetailsComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
-      let estimateId = +params['estimateId'];
-      console.log('ESTIMATE DETAILS ... RETRIEVING ESTIMATEID => ' + estimateId);
-      this.getEstimateDetails(estimateId);
-      this.getComponentList(estimateId);
-      this.getEstimateRoleList(estimateId);
+      this.estimateId = +params['estimateId'];
+      console.log('ESTIMATE DETAILS ... RETRIEVING ESTIMATEID => ' + this.estimateId);
+      this.getEstimateDetails(this.estimateId);
+      this.getComponentList(this.estimateId);
+      this.getEstimateRoleList(this.estimateId);
     })
   }
 
   goToDetails(pComponentId: number) {
     console.log('NAVIGATING TO COMPONENT DETAILS ... COMPONENTID: ' + pComponentId);
     this.router.navigate(['/estimates', 'component', pComponentId]);
+  }
+
+  reset() {
+    this.getEstimateDetails(this.estimateId);
   }
 
   printEstimate(pEstimate: Estimate) {
