@@ -1,7 +1,7 @@
 <div class="animated fadeIn">
   <div class="row">
     <div class="col-md-12">
-      <div class="card clickable">
+      <div class="card">
         <div class="card-header">
           <strong>Recent Estimates</strong>
         </div>
@@ -10,23 +10,23 @@
             <thead>
               <tr>
                 <th>Name</th>
-                <th class="right-align">Labor Cost</th>
-                <th class="right-align">Add-Ons Cost</th>
+                <!--<th class="right-align">Labor Cost</th>-->
+                <!--<th class="right-align">Add-Ons Cost</th>-->
                 <th class="right-align">Total Cost</th>
                 <th class="right-align">Effort (hrs)</th>
-                <th class="right-align">Components Count</th>
-                <th>Date Created</th>
+                <!--<th class="right-align">Components Count</th>-->
+                <!--<th>Date Created</th>-->
               </tr>
             </thead>
             <tbody>
-              <tr class="grow clickable" *ngFor="let estimate of estimates" (click)="goToDetails(estimate.EstimateId)">
+              <tr class="clickable" *ngFor="let estimate of estimates" (click)="goToDetails(estimate.EstimateId)">
                 <td>{{estimate.EstimateName}}</td>
-                <td class="right-align">{{estimate.Cost |  currency : 'USD' : true : '1.2-2'}}</td>
-                <td class="right-align">{{estimate.AddOnCost |  currency : 'USD' : true : '1.2-2'}}</td>
+                <!--<td class="right-align">{{estimate.Cost |  currency : 'USD' : true : '1.2-2'}}</td>-->
+                <!--<td class="right-align">{{estimate.AddOnCost |  currency : 'USD' : true : '1.2-2'}}</td>-->
                 <td class="right-align">{{estimate.TotalCost |  currency : 'USD' : true : '1.2-2'}}</td>
                 <td class="right-align">{{estimate.Effort | number: '1.2-2'}}</td>      
-                <td class="right-align">{{estimate.ComponentsCount |  number: '1.0-0'}}</td> 
-                <td>{{estimate.CreationDate | date: 'fullDate'}}</td>
+                <!--<td class="right-align">{{estimate.ComponentsCount |  number: '1.0-0'}}</td>-->
+                <!--<td>{{estimate.CreationDate | date: 'fullDate'}}</td>-->
               </tr>
             </tbody>
           </table>
