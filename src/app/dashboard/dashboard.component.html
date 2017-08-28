@@ -1,116 +1,83 @@
-<div class="animated fadeIn">
-    <div class="row">
-        <div class="col-md-3">
-            <div class="card card-accent-success">
-                <div class="card-block pb-0">
-                    <p>PROJECT WORK</p>
-                    <i class="fa fa-briefcase fa-3x float-right text-muted" aria-hidden="true"></i>
-                    <h3 class="mb-0 text-muted">10,573</h3>
-                    <p>Year-to-date</p>
-                    <p>+10% yoy</p>
+<div class="animated fadeIn" *ngFor="let dashboardkpi of dashboardKPIs">
+    <div class="card-group">
+        <div class="card">
+            <div class="card-block">
+                <div class="h1 text-muted text-right mb-4">
+                    <i class="fa fa-briefcase"></i>
                 </div>
-            </div>
+                <div class="h4 mb-0">{{dashboardkpi.PrjHrsCurYr | number: '1.0-0'}}</div>
+                <small class="text-muted text-uppercase font-weight-bold">Project hours</small>
+                <div class="text-muted">{{getVariance(dashboardkpi.PrjHrsPreYr, dashboardkpi.PrjHrsCurYr)}} yoy</div>
+          </div>
         </div>
-        <div class="col-md-3">
-            <div class="card card-accent-success">
-                <div class="card-block pb-0">
-                    <p>CAPITALIZATION</p>
-                    <i class="fa fa-usd fa-3x float-right text-muted" aria-hidden="true"></i>
-                    <h3 class="mb-0 text-muted">$232k</h3>
-                    <p>Year-to-date</p>
-                    <p>+28% vs budget</p>
+        <div class="card">
+            <div class="card-block">
+                <div class="h1 text-muted text-right mb-4">
+                    <i class="fa fa-usd"></i>
                 </div>
-            </div>
+                <div class="h4 mb-0">{{shortFormat(dashboardkpi.CapCurYr, 'USD')}}</div>
+                <small class="text-muted text-uppercase font-weight-bold">Capitalization</small>
+                <div class="text-muted">{{getVariance(dashboardkpi.CapBud, dashboardkpi.CapCurYr)}} vs budget</div>
+          </div>
         </div>
-        <div class="col-md-3">
-            <div class="card card-accent-warning">
-                <div class="card-block pb-0">
-                    <p>RESOURCE MIX</p>
-                    <i class="fa fa-users fa-3x float-right text-muted" aria-hidden="true"></i>
-                    <h3 class="mb-0 text-muted">64%</h3>
-                    <p>Onsite</p>
-                    <p>+45% yoy</p>
+        <div class="card">
+            <div class="card-block">
+                <div class="h1 text-muted text-right mb-4">
+                    <i class="fa fa-users"></i>
                 </div>
-            </div>
+                <div class="h4 mb-0">{{dashboardkpi.ResMixCurYr}}%</div>
+                <small class="text-muted text-uppercase font-weight-bold">Resources onsite</small>
+                <div class="text-muted">{{getVariance(dashboardkpi.ResMixPreYr, dashboardkpi.ResMixCurYr)}} yoy</div>
+          </div>
         </div>
-        
-        <div class="col-md-3">
-            <div class="card card-accent-success">
-                <div class="card-block pb-0">
-                    <p>HOURLY RATE</p>
-                    <i class="fa fa-hourglass-start fa-3x float-right text-muted" aria-hidden="true"></i>
-                    <h3 class="mb-0 text-muted">$73.63</h3>
-                    <p>Year-to-date</p>
-                    <p>+4% yoy, -21% vs ref</p>
+        <div class="card">
+            <div class="card-block">
+                <div class="h1 text-muted text-right mb-4">
+                    <i class="fa fa-hourglass-start"></i>
                 </div>
-            </div>
+                <div class="h4 mb-0">$73.63</div>
+                <small class="text-muted text-uppercase font-weight-bold">Avg chargeback rate</small>
+                <div class="text-muted">+4% yoy, -21% vs ref</div>
+          </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-block">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <h5 class="card-title mb-0">Evolution over time</h5>
-                            <div class="small text-muted">2 years view</div>
+    <div class="card">
+        <div class="card-block">
+            <div class="row">
+                <div class="col-sm-4">
+                    <h5 class="card-title mb-0">Trend</h5>
+                    <div class="small text-muted">2 years view</div>
+                </div>
+                <div class="col-sm-8 hidden-sm-down">
+                    <div class="btn-toolbar float-right" role="toolbar" aria-label="Toolbar with button groups">
+                        <div class="btn-group mr-3" data-toggle="buttons" aria-label="First group">
+                            <label class="btn btn-outline-secondary active">
+                                <input type="radio" name="options" id="option1"> Project Work
+                            </label>
+                            <label class="btn btn-outline-secondary">
+                                <input type="radio" name="options" id="option2" checked> Capitalization
+                            </label>
+                            <label class="btn btn-outline-secondary">
+                                <input type="radio" name="options" id="option3"> Resource Mix
+                            </label>
+                            <label class="btn btn-outline-secondary">
+                                <input type="radio" name="options" id="option4"> Hourly Rate
+                            </label>
                         </div>
-                        <div class="col-md-8">
-                            <div class="btn-toolbar float-right" role="toolbar" aria-label="Toolbar with button groups">
-                                <div class="btn-group mr-3" data-toggle="buttons" aria-label="First group">
-                                    <label class="btn btn-outline-secondary active">
-                                        <input type="radio" name="options" id="option1"> Project Work
-                                    </label>
-                                    <label class="btn btn-outline-secondary">
-                                        <input type="radio" name="options" id="option2" checked> Capitalization
-                                    </label>
-                                    <label class="btn btn-outline-secondary">
-                                        <input type="radio" name="options" id="option3"> Resource Mix
-                                    </label>
-                                    <label class="btn btn-outline-secondary">
-                                        <input type="radio" name="options" id="option3"> Hourly Rate
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="chart-wrapper" style="height: 300px; margin: 0 auto; margin-top: 40px;">
-                        <canvas baseChart class="chart"
-                            [datasets]="prjhrs"
-                            [labels]="mainChartLabels"
-                            [options]="mainChartOptions"
-                            [colors]="mainChartColours"
-                            [legend]="false"
-                            [chartType]="'line'"
-                            (chartHover)="chartHovered($event)"
-                            (chartClick)="chartClicked($event)">
-                        </canvas>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-block">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <h5 class="card-title mb-0">Test bar chart</h5>
-                        </div>
-                    </div>
-                    <div class="chart-wrapper" style="height: 300px; margin: 0 auto; margin-top: 40px;">
-                        <canvas baseChart class="chart"
-                            [datasets]="regionValues"
-                            [labels]="regionArray"
-                            [options]="barChartOptions"
-                            [legend]="false"
-                            [chartType]="'bar'"
-                            (chartHover)="chartHovered($event)"
-                            (chartClick)="chartClicked($event)">
-                        </canvas>
-                    </div>
-                </div>
+            <div class="chart-wrapper" style="height: 300px; margin: 0 auto; margin-top: 40px;">
+                <canvas baseChart class="chart"
+                    [datasets]="prjhrs"
+                    [labels]="mainChartLabels"
+                    [options]="mainChartOptions"
+                    [colors]="mainChartColours"
+                    [legend]="false"
+                    [chartType]="'line'"
+                    (chartHover)="chartHovered($event)"
+                    (chartClick)="chartClicked($event)">
+                </canvas>
             </div>
         </div>
     </div>

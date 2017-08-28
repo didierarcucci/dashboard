@@ -23,6 +23,7 @@ import { AppRoutingModule } from './app.routing';
 import { FullLayoutComponent } from './layouts/full-layout.component';
 
 import { EstimateService } from './estimates/estimate.service';
+import { DashboardService } from './dashboard/dashboard.service';
 
 @NgModule({
   imports: [
@@ -50,6 +51,7 @@ import { EstimateService } from './estimates/estimate.service';
       useClass: HashLocationStrategy,
     },
     EstimateService,
+    DashboardService,
     DatePipe
   ],
   bootstrap: [ AppComponent ]

@@ -1,10 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
+import { DashboardKPI } from './dashboardkpi';
+import { DashboardService } from './dashboard.service';
+
 @Component({
   templateUrl: 'dashboard.component.html'
 })
 export class DashboardComponent implements OnInit {
+  dashboardKPIs:  DashboardKPI;
 
   // convert Hex to RGBA
   public convertHex(hex: string, opacity: number) {
@@ -25,10 +29,65 @@ export class DashboardComponent implements OnInit {
     return res;
   }
 
-  constructor( ) { }
+  public getVariance (fromvalue: number, tovalue: number): string {
+    var res;
+    var sign;
 
-   onSelect(event) {
+    var resnum = Math.round(((tovalue/fromvalue)-1)*100);
+
+    if (resnum > 0)
+      sign = '+';
+    else if (resnum < 0)
+      sign = '-';
+    else
+      sign = '';
+
+    res = sign + resnum.toString() + '%';
+
+    return res;
+  }
+
+  public shortFormat(value: number, currency: string): string {
+    var res;
+    var shortnum;
+    var sign;
+    var cur;
+
+    if (currency == '') cur = '';
+    else if (currency == 'USD') cur = '$';
+
+    if (value >= 100000) {
+      shortnum = Math.round(value/1000);
+      sign = 'k';
+    }
+    else if (value >= 1000000) {
+      shortnum = (value/1000000).toPrecision(1);
+      sign = 'M';
+    }
+    else {
+      shortnum = Math.round(value);
+      sign = '';
+    }
+
+    res = cur + shortnum + sign;
+
+    return res;
+  }
+
+  constructor(private dashboardService: DashboardService, private router: Router) { 
+    this.getDashboardKPIs();
+  }
+
+  onSelect(event) {
     console.log(event);
+  }
+
+  getDashboardKPIs() {
+    this.dashboardService.getDashboardKPIs()
+    .subscribe(response => {
+      console.log('*** RESPONSE FROM SERVICE CALL => ' + JSON.stringify(response));
+      this.dashboardKPIs = response;
+    });
   }
 
   // events
@@ -40,7 +99,8 @@ export class DashboardComponent implements OnInit {
     console.log(e);
   }
 
-  ngOnInit() { }
+  ngOnInit() { 
+  }
 
   currencyFormat(val: any): any {
     return val.toLocaleString('en-EN', {style: 'currency', currency: 'USD'});
