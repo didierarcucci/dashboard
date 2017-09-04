@@ -24,6 +24,8 @@ import { FullLayoutComponent } from './layouts/full-layout.component';
 
 import { EstimateService } from './estimates/estimate.service';
 import { DashboardService } from './dashboard/dashboard.service';
+import { ResourcesComponent } from './resources/resources.component';
+import { ResourceService } from './resources/resource.service';
 
 @NgModule({
   imports: [
@@ -43,7 +45,8 @@ import { DashboardService } from './dashboard/dashboard.service';
     NAV_DROPDOWN_DIRECTIVES,
     BreadcrumbsComponent,
     SIDEBAR_TOGGLE_DIRECTIVES,
-    AsideToggleDirective
+    AsideToggleDirective,
+    ResourcesComponent
   ],
   providers: [
     {
@@ -52,6 +55,7 @@ import { DashboardService } from './dashboard/dashboard.service';
     },
     EstimateService,
     DashboardService,
+    ResourceService,
     DatePipe
   ],
   bootstrap: [ AppComponent ]

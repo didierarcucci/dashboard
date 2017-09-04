@@ -5,9 +5,14 @@
                 <div class="h1 text-muted text-right mb-4">
                     <i class="fa fa-briefcase"></i>
                 </div>
-                <div class="h4 mb-0">{{dashboardkpi.PrjHrsCurYr | number: '1.0-0'}}</div>
-                <small class="text-muted text-uppercase font-weight-bold">Project hours</small>
-                <div class="text-muted">{{getVariance(dashboardkpi.PrjHrsPreYr, dashboardkpi.PrjHrsCurYr)}} yoy</div>
+                <div class="h1 mb-0 text-center">{{dashboardkpi.PrjHrsCurYr | number: '1.0-0'}}</div>
+                <div class="text-center text-muted font-weight-bold">hours have been spent on projects</div>
+                <div class="text-center text-muted">{{getVariance(dashboardkpi.PrjHrsPreYr, dashboardkpi.PrjHrsCurYr)}} yoy</div>
+          </div>
+          <div card="card-footer">
+              <div class="text-center">
+                  <a class="nav-link" routerLinkActive="active" [routerLink]="['/actuals']">View Actuals</a>
+              </div>
           </div>
         </div>
         <div class="card">
@@ -15,9 +20,14 @@
                 <div class="h1 text-muted text-right mb-4">
                     <i class="fa fa-usd"></i>
                 </div>
-                <div class="h4 mb-0">{{shortFormat(dashboardkpi.CapCurYr, 'USD')}}</div>
-                <small class="text-muted text-uppercase font-weight-bold">Capitalization</small>
-                <div class="text-muted">{{getVariance(dashboardkpi.CapBud, dashboardkpi.CapCurYr)}} vs budget</div>
+                <div class="h1 mb-0 text-center">{{shortFormat(dashboardkpi.CapCurYr, 'USD')}}</div>
+                <div class="text-center text-muted font-weight-bold">have been capitalized</div>
+                <div class="text-center text-muted">{{getVariance(dashboardkpi.CapBud, dashboardkpi.CapCurYr)}} vs budget</div>
+          </div>
+          <div card="card-footer">
+              <div class="text-center">
+                  <a class="nav-link" routerLinkActive="active" [routerLink]="['/capitalization']">View Capitalization</a>
+              </div>
           </div>
         </div>
         <div class="card">
@@ -25,9 +35,14 @@
                 <div class="h1 text-muted text-right mb-4">
                     <i class="fa fa-users"></i>
                 </div>
-                <div class="h4 mb-0">{{dashboardkpi.ResMixCurYr}}%</div>
-                <small class="text-muted text-uppercase font-weight-bold">Resources onsite</small>
-                <div class="text-muted">{{getVariance(dashboardkpi.ResMixPreYr, dashboardkpi.ResMixCurYr)}} yoy</div>
+                <div class="h1 mb-0 text-center">{{dashboardkpi.ResMixCurYr}}%</div>
+                <div class="text-center text-muted font-weight-bold">of the resources are located onsite</div>
+                <div class="text-center text-muted">{{getVariance(dashboardkpi.ResMixPreYr, dashboardkpi.ResMixCurYr)}} yoy</div>
+          </div>
+          <div card="card-footer">
+              <div class="text-center">
+                  <a class="nav-link" routerLinkActive="active" [routerLink]="['/resources']">View Resources</a>
+              </div>
           </div>
         </div>
         <div class="card">
@@ -35,9 +50,9 @@
                 <div class="h1 text-muted text-right mb-4">
                     <i class="fa fa-hourglass-start"></i>
                 </div>
-                <div class="h4 mb-0">$73.63</div>
-                <small class="text-muted text-uppercase font-weight-bold">Avg chargeback rate</small>
-                <div class="text-muted">+4% yoy, -21% vs ref</div>
+                <div class="h1 mb-0 text-center">$73.63</div>
+                <div class="text-center text-muted font-weight-bold">is our average billing rate</div>
+                <div class="text-center text-muted">+4% yoy, -21% vs ref</div>
           </div>
         </div>
     </div>

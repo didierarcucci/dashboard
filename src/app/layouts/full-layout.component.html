@@ -1,19 +1,20 @@
 <header class="app-header navbar">
     <button class="navbar-toggler mobile-sidebar-toggler hidden-lg-up" type="button">&#9776;</button>
     <a class="navbar-brand" href="#"></a>
+    <!--<div class="font-weight-bold"><span style="display: inline-block; vertical-align: center">Better sight. Better Life.</span></div>-->
 
     <ul class="nav navbar-nav hidden-md-down">
         <li class="nav-item">
             <a class="nav-link navbar-toggler sidebar-toggler" href="#">&#9776;</a>
         </li>
         <li class="nav-item px-1">
-            <a class="nav-link" href="#">Project Delivery</a>
+            <a class="nav-link" routerLinkActive="active" [routerLink]="['/dashboard']">Dashboard</a>
         </li>
         <li class="nav-item px-1">
-            <a class="nav-link" href="#">Application Support</a>
+            <a class="nav-link" routerLinkActive="active" [routerLink]="['/estimates']">Estimates</a>
         </li>
         <li class="nav-item px-1">
-            <a class="nav-link" href="#">Administration</a>
+            <a class="nav-link" routerLinkActive="active" [routerLink]="['/resources']">Resources</a>
         </li>
     </ul>
 </header>
@@ -33,7 +34,7 @@
                     <a class="nav-link" routerLinkActive="active" [routerLink]="['/capitalization']"><i class="fa fa-line-chart"></i> Capitalization</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" routerLinkActive="active" [routerLink]="['/invoices']"><i class="fa fa-dollar"></i> Invoices</a>
+                    <a class="nav-link" routerLinkActive="active" [routerLink]="['/actuals']"><i class="fa fa-dollar"></i> Actuals</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" routerLinkActive="active" [routerLink]="['/capacityplanning']"><i class="icon-people"></i> Capacity Planning</a>
@@ -62,11 +63,13 @@
         <ol class="breadcrumb">
             <breadcrumbs></breadcrumbs>
             <!-- Breadcrumb Menu-->
+            <!--
             <li class="breadcrumb-menu d-md-down-none">
                 <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
                     <a class="btn btn-secondary" routerLinkActive="active" [routerLink]="['/estimates/newestimate']"><i class="fa fa-plus" aria-hidden="true"></i> &nbsp;New Estimate</a>
                 </div>
             </li>
+            -->
         </ol>
 
         <div class="container-fluid">

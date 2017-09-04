@@ -1,0 +1,51 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-md-8 offset-2">
+      <div class="card">
+        <div class="card-header">
+          <strong>Resources</strong>
+        </div>
+        <div class="card-block">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Organization</th>
+                <th>Resource Type</th>
+                <th>Role</th>
+                <th class="text-right">Bill Rate</th>
+                <th>Location</th>
+                <th class="text-right">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="clickable" *ngFor="let resource of resources">
+                <td>{{resource.EmpName}}</td>
+                <td>{{resource.Organization}}</td>
+                <td>{{resource.EmpType}}</td>
+                <td>{{resource.Role}}</td>
+                <td class="text-right">{{resource.CBRate |  currency : 'USD' : true : '1.2-2'}}</td>
+                <td>{{resource.Location}}</td>
+                <td class="text-right">
+                  <span class="badge badge-success" *ngIf="isActive(resource.StartDateActive, resource.EndDateActive) == 'A'">Active</span>
+                  <span class="badge badge-default" *ngIf="isActive(resource.StartDateActive, resource.EndDateActive) == 'I'">Inactive</span>
+                  <span class="badge badge-warning" *ngIf="isActive(resource.StartDateActive, resource.EndDateActive) == 'P'">Pending</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <ul class="pagination">
+            <li class="page-item"><a class="page-link" href="#">Prev</a></li>
+            <li class="page-item active">
+              <a class="page-link" href="#">1</a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">4</a></li>
+            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
