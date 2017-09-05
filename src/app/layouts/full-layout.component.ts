@@ -1,12 +1,16 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './full-layout.component.html'
 })
 export class FullLayoutComponent implements OnInit {
+  router: Router;
 
-  constructor() { }
+  constructor(_router: Router) {
+    this.router = _router;
+  }
 
   public disabled:boolean = false;
   public status:{isopen:boolean} = {isopen: false};
@@ -21,5 +25,5 @@ export class FullLayoutComponent implements OnInit {
     this.status.isopen = !this.status.isopen;
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 }

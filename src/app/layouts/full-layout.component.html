@@ -22,9 +22,9 @@
 <div class="app-body">
     <div class="sidebar">
         <nav class="sidebar-nav">
-            <ul class="nav">
+            <ul class="nav" *ngIf="router.isActive('/dashboard')">
                 <li class="nav-item">
-                    <a class="nav-link" routerLinkActive="active" [routerLink]="['/dashboard']"><i class="icon-speedometer"></i> Dashboard </a>
+                    <a class="nav-link"><i class="icon-speedometer"></i> Dashboard </a>
                 </li>
                 <li class="divider"></li>
                 <li class="nav-title">
@@ -39,18 +39,23 @@
                 <li class="nav-item">
                     <a class="nav-link" routerLinkActive="active" [routerLink]="['/capacityplanning']"><i class="icon-people"></i> Capacity Planning</a>
                 </li>
-                <li class="divider"></li>
-                <li class="nav-title">
-                Platform
-                </li>
+            </ul>
+            <ul class="nav" *ngIf="router.isActive('/estimates')">
                 <li class="nav-item">
-                    <a class="nav-link" routerLinkActive="active" [routerLink]="['/deployments']"><i class="icon-graduation"></i> Deployment Requests</a>
+                    <a class="nav-link"><i class="icon-speedometer"></i> Estimates </a>
                 </li>
+                <li class="divider"></li>
                 <li class="nav-item">
                     <a class="nav-link" routerLinkActive="active" [routerLink]="['/estimates']"><i class="fa fa-money"></i> Estimates</a>
                 </li>
+            </ul>
+            <ul class="nav" *ngIf="router.isActive('/resources')">
                 <li class="nav-item">
-                    <a class="nav-link" routerLinkActive="active" [routerLink]="['/enhancements']"><i class="icon-compass"></i> Enhancements</a>
+                    <a class="nav-link"><i class="icon-speedometer"></i> Resources </a>
+                </li>
+                <li class="divider"></li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLinkActive="active" [routerLink]="['/resources']"><i class="fa fa-money"></i> View Resources</a>
                 </li>
             </ul>
         </nav>
