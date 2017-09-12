@@ -1,6 +1,6 @@
 export class Resource {
     EmpId: number;
-    ResoEmpNameurceName: string;
+    EmpName: string;
     Dept: string;
     Team: string;
     Organization: string;

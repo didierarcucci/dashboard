@@ -26,6 +26,7 @@ import { EstimateService } from './estimates/estimate.service';
 import { DashboardService } from './dashboard/dashboard.service';
 import { ResourcesComponent } from './resources/resources.component';
 import { ResourceService } from './resources/resource.service';
+import { MyFilterPipe } from './my-filter.pipe';
 
 @NgModule({
   imports: [
@@ -46,7 +47,8 @@ import { ResourceService } from './resources/resource.service';
     BreadcrumbsComponent,
     SIDEBAR_TOGGLE_DIRECTIVES,
     AsideToggleDirective,
-    ResourcesComponent
+    ResourcesComponent,
+    MyFilterPipe
   ],
   providers: [
     {

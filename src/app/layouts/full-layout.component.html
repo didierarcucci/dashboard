@@ -25,20 +25,17 @@
         <nav class="sidebar-nav">
             <ul class="nav">
                 <li class="nav-item">
-                    <a class="nav-link"><i class="icon-speedometer"></i> Dashboard </a>
+                    <a class="nav-link" routerLinkActive="active" [routerLink]="['/dashboard']"><i class="icon-speedometer"></i> Dashboard </a>
                 </li>
-                <li class="divider"></li>
+                <!--<li class="divider"></li>
                 <li class="nav-title">
                     Charts
+                </li>-->
+                <li class="nav-item">
+                    <a class="nav-link" routerLinkActive="active" [routerLink]="['/estimates']"><i class="fa fa-dollar"></i> Estimates</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" routerLinkActive="active" [routerLink]="['/capitalization']"><i class="fa fa-line-chart"></i> Capitalization</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" routerLinkActive="active" [routerLink]="['/actuals']"><i class="fa fa-dollar"></i> Actuals</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" routerLinkActive="active" [routerLink]="['/capacityplanning']"><i class="icon-people"></i> Capacity Planning</a>
+                    <a class="nav-link" routerLinkActive="active" [routerLink]="['/resources']"><i class="icon-people"></i> Resources</a>
                 </li>
             </ul>
         </nav>
