@@ -1,9 +1,13 @@
 <div class="animated fadeIn">
-  <div class="row">
-    <div class="col-lg-12">
-      <button type="button" class="btn btn-primary" routerLinkActive="active" [routerLink]="['/estimates/newestimate']">New Estimate</button>
+  <!--<div class="row">
+    <div class="col-lg-3">
+      <h1>Estimates</h1>
+      <small>&nbsp;</small>
     </div>
-  </div>
+    <div class="col-lg-9">
+      <i class="fa fa-plus fa-2x clickable float-right" title="Add Resource" routerLinkActive="active" [routerLink]="['/estimates/newestimate']"></i>
+    </div>
+  </div> -->
   <div class="row">
     <div class="col-lg-12">&nbsp;</div>
   </div>
@@ -11,10 +15,13 @@
     <div class="col-lg-12">
       <div class="card">
         <div class="card-header">
-          <strong>Recent Estimates</strong>
+          Estimates
+          <div class="card-actions">
+            <a  class="btn-setting clickable" title="Add Estimate"><i class="icon-plus" routerLinkActive="active" [routerLink]="['/estimates/newestimate']"></i></a>
+          </div>
         </div>
         <div class="card-block">
-          <table class="table table-bordered table-striped">
+          <table class="table table-hover">
             <thead>
               <tr>
                 <th>Name</th>

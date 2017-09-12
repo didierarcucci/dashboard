@@ -39,3 +39,23 @@ input {
 .size-halfway {
     width: 50%;
 }
+
+.filter-title {
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.hr_line {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+@media all and (max-width: 768px) {
+    .hideonmobile {
+      display: none;
+    }
+  }

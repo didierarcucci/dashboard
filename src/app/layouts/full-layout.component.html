@@ -4,9 +4,9 @@
     <!--<div class="font-weight-bold"><span style="display: inline-block; vertical-align: center">Better sight. Better Life.</span></div>-->
 
     <ul class="nav navbar-nav hidden-md-down">
-        <li class="nav-item">
+        <!--<li class="nav-item">
             <a class="nav-link navbar-toggler sidebar-toggler" href="#">&#9776;</a>
-        </li>
+        </li>-->
         <li class="nav-item px-1">
             <a class="nav-link" routerLinkActive="active" [routerLink]="['/dashboard']">Dashboard</a>
         </li>
@@ -17,12 +17,13 @@
             <a class="nav-link" routerLinkActive="active" [routerLink]="['/resources']">Resources</a>
         </li>
     </ul>
+
 </header>
 
 <div class="app-body">
     <div class="sidebar">
         <nav class="sidebar-nav">
-            <ul class="nav" *ngIf="router.isActive('/dashboard')">
+            <ul class="nav">
                 <li class="nav-item">
                     <a class="nav-link"><i class="icon-speedometer"></i> Dashboard </a>
                 </li>
@@ -38,24 +39,6 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" routerLinkActive="active" [routerLink]="['/capacityplanning']"><i class="icon-people"></i> Capacity Planning</a>
-                </li>
-            </ul>
-            <ul class="nav" *ngIf="router.isActive('/estimates')">
-                <li class="nav-item">
-                    <a class="nav-link"><i class="icon-speedometer"></i> Estimates </a>
-                </li>
-                <li class="divider"></li>
-                <li class="nav-item">
-                    <a class="nav-link" routerLinkActive="active" [routerLink]="['/estimates']"><i class="fa fa-money"></i> Estimates</a>
-                </li>
-            </ul>
-            <ul class="nav" *ngIf="router.isActive('/resources')">
-                <li class="nav-item">
-                    <a class="nav-link"><i class="icon-speedometer"></i> Resources </a>
-                </li>
-                <li class="divider"></li>
-                <li class="nav-item">
-                    <a class="nav-link" routerLinkActive="active" [routerLink]="['/resources']"><i class="fa fa-money"></i> View Resources</a>
                 </li>
             </ul>
         </nav>
