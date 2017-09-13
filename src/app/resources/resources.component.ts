@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { Resource } from './resource';
 import { ResourceService } from './resource.service';
 
+import { PagerService } from '../shared/pager.service';
+
 @Component({
   selector: 'app-resources',
   templateUrl: './resources.component.html',
@@ -12,9 +14,11 @@ import { ResourceService } from './resource.service';
 export class ResourcesComponent implements OnInit {
   resources: Resource[];
 
-  constructor(private resourceSvc: ResourceService, private router: Router) {
-    this.getResources();
-  }
+  pagedResources: Resource[];
+
+  pager: any = {};
+
+  constructor(private pagerSvc: PagerService, private resourceSvc: ResourceService, private router: Router) { }
 
   getResources() {
     this.resources = [];
@@ -22,6 +26,7 @@ export class ResourcesComponent implements OnInit {
       .subscribe(response => {
         //console.log('*** RESPONSE FROM SERVICE CALL => ' + JSON.stringify(response));
         this.resources = response;
+        this.setPage(1);
       });
   }
 
@@ -35,9 +40,22 @@ export class ResourcesComponent implements OnInit {
       return 'P';
     else
       return 'I';
+  }
+
+  setPage(page: number) {
+    if (page < 1 || page > this.pager.totalPages) {
+      return;
     }
 
+    // get pager object from service
+    this.pager = this.pagerSvc.getPager(this.resources.length, page);
+
+    // get current page of items
+    this.pagedResources = this.resources.slice(this.pager.startIndex, this.pager.endIndex + 1);
+  }
+
   ngOnInit() {
+    this.getResources();
   }
 
 }

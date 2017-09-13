@@ -27,6 +27,7 @@ import { DashboardService } from './dashboard/dashboard.service';
 import { ResourcesComponent } from './resources/resources.component';
 import { ResourceService } from './resources/resource.service';
 import { MyFilterPipe } from './my-filter.pipe';
+import { PagerService } from './shared/pager.service';
 
 @NgModule({
   imports: [
@@ -58,7 +59,8 @@ import { MyFilterPipe } from './my-filter.pipe';
     EstimateService,
     DashboardService,
     ResourceService,
-    DatePipe
+    DatePipe,
+    PagerService
   ],
   bootstrap: [ AppComponent ]
 })
