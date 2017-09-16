@@ -39,7 +39,7 @@ export class EstimateComponent implements OnInit {
     }
 
     // get pager object from service
-    this.pager = this.pagerSvc.getPager(this.estimates.length, page);
+    this.pager = this.pagerSvc.getPager(this.estimates.length, page, 10, 4);
 
     // get current page of items
     this.pagedEstimates = this.estimates.slice(this.pager.startIndex, this.pager.endIndex + 1);

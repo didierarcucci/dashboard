@@ -48,7 +48,7 @@ export class ResourcesComponent implements OnInit {
     }
 
     // get pager object from service
-    this.pager = this.pagerSvc.getPager(this.resources.length, page);
+    this.pager = this.pagerSvc.getPager(this.resources.length, page, 10, 4);
 
     // get current page of items
     this.pagedResources = this.resources.slice(this.pager.startIndex, this.pager.endIndex + 1);

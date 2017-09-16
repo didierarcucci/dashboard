@@ -5,12 +5,13 @@ export class PagerService {
 
   constructor() { }
 
-  getPager(totalItems: number, currentPage: number = 1, pageSize: number = 10) {
+  getPager(totalItems: number, currentPage: number = 1, pageSize: number = 10, pagerSize: number = 10) {
     // calculate total pages
     let totalPages = Math.ceil(totalItems / pageSize);
+    let halfPagerSize = Math.ceil(pagerSize / 2);
 
     let startPage: number, endPage: number;
-
+    /*
     if (totalPages <= 10) {
       // less than 10 total pages so show all
       startPage = 1;
@@ -28,20 +29,41 @@ export class PagerService {
           endPage = currentPage + 4;
       }
     }
+    */
+
+    console.log('totalPages: ' + totalPages);
+    console.log('pagerSize: ' + pagerSize);
+    console.log('currentPage: ' + currentPage);
+    console.log('halfPagerSize: ' + halfPagerSize);
+
+    if (totalPages <= pagerSize) {
+      console.log('totalPages <= pagerSize ... startPage = 1 ... endPage = ' + totalPages);
+      startPage = 1;
+      endPage = totalPages;
+    } else {
+      if (currentPage <= halfPagerSize) {
+        startPage = 1;
+        endPage = pagerSize;
+        console.log('currentPage <= halfPagerSize ... startPage = ' + startPage + ' ... endPage = ' + endPage);
+      } else if (currentPage + halfPagerSize >= totalPages ) {
+        startPage = totalPages - pagerSize + 1;
+        endPage = totalPages;
+        console.log('currentPage + halfPagerSize >= totalPages ... startPage = ' + startPage + ' ... endPage = ' + endPage);
+      } else {
+        startPage = currentPage - halfPagerSize + 1;
+        endPage = currentPage + halfPagerSize;
+        console.log('other ... startPage = ' + startPage + ' ... endPage = ' + endPage);
+      }
+    }
 
     // calculate start and end item indexes
     let startIndex = (currentPage - 1) * pageSize;
     let endIndex = Math.min(startIndex + pageSize - 1, totalItems - 1);
 
-    let endArray = totalPages - startPage;
-    if (endArray > 9) {
-      endArray = 9;
-    }
-
     // create an array of pages to ng-repeat in the pager control
    // let pages = _.range(startPage, endPage + 1);
    let pages = [];
-   for (let i: number = 0; i <= endArray; i++) {
+   for (let i: number = 0; i <= pagerSize-1; i++) {
      pages[i] = startPage + i;
    }
 
