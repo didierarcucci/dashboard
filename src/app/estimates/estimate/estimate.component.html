@@ -1,58 +1,57 @@
 <div class="animated fadeIn">
-  <div class="row">
-    <div class="col-lg-12">
-      <h1>Estimates</h1>
+  <div class="card">
+    <div class="card-header">
+      Estimates
+      <!--
+      <div class="card-actions">
+        <a class="btn-transparent" title="New estimate" routerLinkActive="active" [routerLink]="['/estimates/newestimate']"><i class="fa fa-plus"></i></a>
+      </div>-->
     </div>
-    <div class="col-lg-12">
-      <i class="fa fa-plus fa-2x clickable float-right" title="Add Resource" routerLinkActive="active" [routerLink]="['/estimates/newestimate']"></i>
-      <p>&nbsp;</p>
-    </div>
-    <div class="col-lg-12">
-      <div class="card">
-        <div class="card-block">
-          <table class="table table-hover">
-            <thead>
+    <div class="card-block">
+      <div class="row">
+        <div class="col-lg-12">
+          <button type="button" class="btn btn-primary btn-sm float-right" routerLinkActive="active" [routerLink]="['/estimates/newestimate']">New Estimate</button>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-lg-12">
+          <table class="table table-hover table-outline mb-0">
+            <thead class="thead-default">
               <tr>
                 <th>Name</th>
-                <!--<th class="right-align">Labor Cost</th>-->
-                <!--<th class="right-align">Add-Ons Cost</th>-->
-                <th class="right-align">Total Cost</th>
-                <th class="right-align">Effort (hrs)</th>
-                <!--<th class="right-align">Components Count</th>-->
-                <!--<th>Date Created</th>-->
+                <th class="text-right">Total Cost</th>
+                <th class="text-right hidden-sm-down">Effort (hrs)</th>
               </tr>
             </thead>
             <tbody>
               <tr class="clickable" *ngFor="let estimate of pagedEstimates" (click)="goToDetails(estimate.EstimateId)">
                 <td>{{estimate.EstimateName}}</td>
-                <!--<td class="right-align">{{estimate.Cost |  currency : 'USD' : true : '1.2-2'}}</td>-->
-                <!--<td class="right-align">{{estimate.AddOnCost |  currency : 'USD' : true : '1.2-2'}}</td>-->
-                <td class="right-align">{{estimate.TotalCost |  currency : 'USD' : true : '1.2-2'}}</td>
-                <td class="right-align">{{estimate.Effort | number: '1.2-2'}}</td>      
-                <!--<td class="right-align">{{estimate.ComponentsCount |  number: '1.0-0'}}</td>-->
-                <!--<td>{{estimate.CreationDate | date: 'fullDate'}}</td>-->
+                <td class="text-right">{{estimate.TotalCost |  currency : 'USD' : true : '1.2-2'}}</td>
+                <td class="text-right hidden-sm-down">{{estimate.Effort | number: '1.2-2'}}</td>      
               </tr>
             </tbody>
           </table>
-          <ul class="pagination" *ngIf="pager.pages && pager.pages.length">
-            <li class="page-item" [ngClass]="{disabled:pager.currentPage === 1}">
-              <a class="page-link" (click)="setPage(1)">First</a>
-            </li>
-            <li class="page-item" [ngClass]="{disabled:pager.currentPage === 1}">
-              <a class="page-link" (click)="setPage(pager.currentPage - 1)">Prev</a>
-            </li>
-            <li class="page-item" *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
-              <a class="page-link" (click)="setPage(page)">{{page}}</a>
-            </li>
-            <li class="page-item" [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
-              <a class="page-link" (click)="setPage(pager.currentPage + 1)">Next</a>
-            </li>
-            <li class="page-item" [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
-              <a class="page-link" (click)="setPage(pager.totalPages)">Last</a>
-            </li>
-          </ul>
         </div>
       </div>
+      <br>
+      <ul class="pagination" *ngIf="pager.pages && pager.pages.length">
+        <li class="page-item" [ngClass]="{disabled:pager.currentPage === 1}">
+          <a class="page-link" (click)="setPage(1)">&laquo;</a>
+        </li>
+        <li class="page-item" [ngClass]="{disabled:pager.currentPage === 1}">
+          <a class="page-link" (click)="setPage(pager.currentPage - 1)">&lsaquo;</a>
+        </li>
+        <li class="page-item" *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+          <a class="page-link" (click)="setPage(page)">{{page}}</a>
+        </li>
+        <li class="page-item" [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+          <a class="page-link" (click)="setPage(pager.currentPage + 1)">&rsaquo;</a>
+        </li>
+        <li class="page-item" [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+          <a class="page-link" (click)="setPage(pager.totalPages)">&raquo;</a>
+        </li>
+      </ul>
     </div>
   </div>
 </div>

@@ -1,9 +1,6 @@
 // Here you can add other styles
 .clickable { cursor: pointer; }
 
-.right-align { text-align: right; }
-.center-align { text-align: center; }
-
 .grow { transition: all .3s ease-in-out; }
 
 .grow:hover { 
@@ -68,8 +65,8 @@ input {
     background-color: #fff;
 }
 
-.bg-grey {
-    background-color: #eceff1;
+.bg-body {
+    background-color: #e4e5e6;
 }
 
 .card-shadow {
