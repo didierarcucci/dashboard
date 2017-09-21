@@ -19,6 +19,19 @@ export class ResourceService {
       .catch(this.getError);
   }
 
+  getResourceDetails(pId: number) {
+    var url = '/local/resourcedetails';
+
+    console.log('... URL TO CALL => ' + url);
+
+    var params = new URLSearchParams();
+    params.set('resourceId', pId.toString());
+
+    return this.http.get(url, { search : params })
+      .map((res: Response) => res.json())
+      .catch(this.getError);
+  }
+
   private getError(error: Response): Observable<any>{
       console.log(error);
       return Observable.throw(error.json() || 'Server Issue');

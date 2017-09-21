@@ -10,7 +10,7 @@
     <div class="card-block">
       <div class="row">
         <div class="col-lg-12">
-          <button type="button" class="btn btn-primary btn-sm float-right" routerLinkActive="active" [routerLink]="['/estimates/newestimate']">New Estimate</button>
+          <button type="button" class="btn btn-primary btn-sm float-right" routerLinkActive="active" [routerLink]="['/estimates', 'newestimate']">New Estimate</button>
         </div>
       </div>
       <br>
@@ -25,7 +25,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr class="clickable" *ngFor="let estimate of pagedEstimates" (click)="goToDetails(estimate.EstimateId)">
+              <tr class="clickable" *ngFor="let estimate of pagedEstimates" routerLinkActive="active" [routerLink]="['/estimates','details', estimate.EstimateId]">
                 <td>{{estimate.EstimateName}}</td>
                 <td class="text-right">{{estimate.TotalCost |  currency : 'USD' : true : '1.2-2'}}</td>
                 <td class="text-right hidden-sm-down">{{estimate.Effort | number: '1.2-2'}}</td>      

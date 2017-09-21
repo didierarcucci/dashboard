@@ -84,7 +84,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr class="clickable" *ngFor="let component of ComponentList" (click)="goToDetails(component.ComponentId)">
+          <tr class="clickable" *ngFor="let component of ComponentList" routerLinkActive="active" [routerLink]="['/estimates','component', component.ComponentId]">
             <td>{{component.ComponentName}}</td>
             <td>{{component.Complexity}}</td>
             <td class="text-right">{{component.Effort | number: '1.2-2'}}</td>

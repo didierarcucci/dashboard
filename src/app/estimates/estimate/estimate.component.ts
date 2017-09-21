@@ -28,11 +28,6 @@ export class EstimateComponent implements OnInit {
       });
   }
 
-  goToDetails(pEstimateId: number) {
-    console.log('NAVIGATING TO ESTIMATE DETAILS ... ESTIMATEID: ' + pEstimateId);
-    this.router.navigate(['/estimates', 'details', pEstimateId]);
-  }
-
   setPage(page: number) {
     if (page < 1 || page > this.pager.totalPages) {
       return;

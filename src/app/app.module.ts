@@ -24,7 +24,6 @@ import { FullLayoutComponent } from './layouts/full-layout.component';
 
 import { EstimateService } from './estimates/estimate.service';
 import { DashboardService } from './dashboard/dashboard.service';
-import { ResourcesComponent } from './resources/resources.component';
 import { ResourceService } from './resources/resource.service';
 import { MyFilterPipe } from './my-filter.pipe';
 import { PagerService } from './shared/pager.service';
@@ -48,7 +47,6 @@ import { PagerService } from './shared/pager.service';
     BreadcrumbsComponent,
     SIDEBAR_TOGGLE_DIRECTIVES,
     AsideToggleDirective,
-    ResourcesComponent,
     MyFilterPipe
   ],
   providers: [

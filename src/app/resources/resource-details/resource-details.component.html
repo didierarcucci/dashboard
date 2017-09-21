@@ -1,0 +1,16 @@
+<div class="animated fadeIn">
+  <div class="card" *ngFor="let resource of resourceDetails">
+    <div class="card-header">
+      Resource Details
+    </div>
+    <div class="card-block">
+      <div class="row">
+        <div class="col-lg-1">Avatar</div>
+        <div class="col-lg-11">
+          <h4 class="card-title mb-0">{{resource.EmpName}}</h4>
+          <div class="text-muted">{{resource.Role}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
