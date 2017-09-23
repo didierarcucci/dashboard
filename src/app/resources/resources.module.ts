@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule, DatePipe } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { ResourcesComponent } from './resources.component';
 import { ResourceDetailsComponent } from './resource-details/resource-details.component';
@@ -11,6 +11,7 @@ import { ResourcesRoutingModule } from './resources-routing.module';
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     ResourcesRoutingModule
   ],
   declarations: [

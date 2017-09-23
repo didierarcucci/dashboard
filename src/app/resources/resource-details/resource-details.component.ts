@@ -31,4 +31,8 @@ export class ResourceDetailsComponent implements OnInit {
     });
   }
 
+  onSubmit(form: any): void {  
+    console.log('you submitted value:', form);  
+  }
+
 }
